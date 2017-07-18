@@ -13,9 +13,9 @@ runAjax = function(sel, href) {
 }
 
 updateAjax = function(sel, html) {
-  $(sel).html($('html dt h3', html));
+  $(sel).html($('dt', html))
 }
 
 $(document).ready(function() {
-  runAjax('#bk1', './bookmarks.html')
+  runAjax('#bk1', 'https://jkpluta.github.io/bookmarks.html')
 })
