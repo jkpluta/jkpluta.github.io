@@ -1,5 +1,5 @@
 runAjax = function(sel, href) {
-  $(sel).html('<img src="./img/spinner.gif">')
+  // $(sel).html('<img src="./img/spinner.gif">')
   $.ajax({
     url: href,
     cache: false,
@@ -13,7 +13,10 @@ runAjax = function(sel, href) {
 }
 
 updateAjax = function(sel, html) {
-  $(sel).html($('dt', html))
+  $('dl', html).each(function(idx) {
+    $('#bk' + idx % 4).append($('dl', html).eq(idx).prev())
+    $('#bk' + idx % 4).append($('dl', html).eq(idx))
+  })
 }
 
 $(document).ready(function() {
