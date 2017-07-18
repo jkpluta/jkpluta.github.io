@@ -13,7 +13,7 @@ runAjax = function(sel, href) {
 }
 
 updateAjax = function(sel, html) {
-  $(sel).html($('h3', html));
+  $(sel).html($('html.dt', html));
 }
 
 $(document).ready(function() {
