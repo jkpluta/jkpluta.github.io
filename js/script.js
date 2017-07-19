@@ -1,10 +1,10 @@
-runAjax = function(sel, href) {
+function pobierzZakładki(sel, url) {
   // $(sel).html('<img src="./img/spinner.gif">')
   $.ajax({
-    url: href,
+    url: url,
     cache: false,
     success: function(html) {
-      updateAjax(sel, html)
+      wczytajZakładki(sel, html)
     },
     error: function(xhr, status, error) {
       $(sel).html('<img src="./img/error.png"> <b>' + status + '</b> <i>' + error + "</i>")
@@ -12,35 +12,31 @@ runAjax = function(sel, href) {
   })
 }
 
-updateAjax = function(sel, html) {
-  $('dl', html).each(function(idx) {
-    //$('#bk' + idx % 4).append($('dl', html).eq(idx).prev().prop("tagName"))
-    $('#bk' + idx % 4).append('<h4>' + $('dl', html).eq(idx).prev().html() + '</h4>')
-    //$('#bk' + idx % 4).append($('dl', html).eq(idx).prev())
-    //$('#bk' + idx % 4).append($('dl', html).eq(idx))
+function wczytajZakładki(sel, html) {
+  var listy = $('dl', html)
+  for(var i = 0; i < listy.length; i++) {
+    var bieżąca_lista = listy.eq(i)
+    var bieżące_pozycje = bieżąca_lista.children('dt')
 
-    var dl = $('dl', html).eq(idx).children('dt')
+    $('#bk' + i % 4).append('<h4>' + bieżąca_lista.prev().html() + '</h4>')
+    $('#bk' + i % 4).append('<p><dl>')
 
-    $('#bk' + idx % 4).append('<p><dl>')
+    for(var j = 0; j < bieżące_pozycje.length; j++) {
 
-    /*
-    $('a', dl).each(function(jdx) {
-      $('#bk' + idx % 4).append('<dt>' + $('a', dl).eq(jdx)[0].outerHTML + '</dt>')
-    })
-    */
+      var bieżąca_pozycja = bieżące_pozycje.eq(j)
+      var bieżący_link = bieżąca_pozycja.children().first()
 
-    dl.each(function(jdx, dt) {
-      dl.eq(jdx).children('a').each(function(kdx) {
-        a = dl.eq(jdx).children('a').eq(kdx)
-        $('#bk' + idx % 4).append('<dt>' + a[0].outerHTML + '</dt>')
-      })
-    })
+      if (bieżący_link.prop('tagName') == 'A') {
+        $('#bk' + i % 4).append('<dt>' + bieżący_link[0].outerHTML + '</dt>')
+      }
 
-    $('#bk' + idx % 4).append('</dl></p>')
+    }
 
-  })
+    $('#bk' + i % 4).append('</dl></p>')
+
+  }
 }
 
 $(document).ready(function() {
-  runAjax('#bk1', 'https://jkpluta.github.io/bookmarks.html')
+  pobierzZakładki('#bk1', 'https://jkpluta.github.io/bookmarks.html')
 })
