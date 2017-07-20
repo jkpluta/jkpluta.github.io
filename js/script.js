@@ -16,17 +16,15 @@ function pobierzZakładki(sel, url) {
 
 function wczytajZakładki(sel, html) {
   $('#bks').html('')
-  for(var i = 0; i < LICZBA_KOLUMN; i++) {
-    $('#bks').append('<div id="bk' + i + '" class="col-lg-' + 12 / LICZBA_KOLUMN + '"></div>')
-  }
-
   var listy = $('dl', html)
   for (var i = 0; i < listy.length; i++) {
+    $('#bks').append('<div id="bk' + i + '" class="col-md-6 col-lg-4 col-xl-3"></div>')
+
     var bieżąca_lista = listy.eq(i)
     var bieżące_pozycje = bieżąca_lista.children('dt')
 
-    $('#bk' + i % LICZBA_KOLUMN).append('<h4>' + bieżąca_lista.prev().html() + '</h4>')
-    $('#bk' + i % LICZBA_KOLUMN).append('<p><dl>')
+    $('#bk' + i).append('<h4>' + bieżąca_lista.prev().html() + '</h4>')
+    $('#bk' + i).append('<p><dl>')
 
     for (var j = 0; j < bieżące_pozycje.length; j++) {
 
@@ -35,12 +33,12 @@ function wczytajZakładki(sel, html) {
       
       if (bieżące_linki.length > 0) {
         var bieżący_link = bieżące_linki.first()
-        $('#bk' + i % LICZBA_KOLUMN).append('<dt>' + bieżący_link[0].outerHTML + '</dt>')
+        $('#bk' + i).append('<dt>' + bieżący_link[0].outerHTML + '</dt>')
       }
 
     }
 
-    $('#bk' + i % LICZBA_KOLUMN).append('</dl></p>')
+    $('#bk' + i).append('</dl></p>')
 
   }
 }
