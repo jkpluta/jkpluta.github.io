@@ -43,6 +43,25 @@ function wczytajZakładki(sel, html) {
   }
 }
 
+function pobierzInformacje(sel, url) {
+  $(sel).html('<img src="./img/spinner.gif">')
+  $.ajax({
+    url: url,
+    cache: false,
+    success: function(html) {
+      wczytajInformacje(sel, html)
+    },
+    error: function(xhr, status, error) {
+      $(sel).html('<img src="./img/error.png"> <b>' + status + '</b> <i>' + error + "</i>")
+    }
+  })
+}
+
+function wczytajInformacje(sel, html) {
+  $('#info').html(html)
+}
+
 $(document).ready(function() {
+  pobierzInformacje('#info', 'https://jkpluta.github.io/info.html')
   pobierzZakładki('#bks', 'https://jkpluta.github.io/bookmarks.html')
 })
