@@ -39,7 +39,6 @@ function wczytajZakładki(sel, html) {
     }
 
     $('#bk' + i).append('</dl></p>')
-
   }
 }
 
