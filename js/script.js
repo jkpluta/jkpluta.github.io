@@ -18,7 +18,7 @@ function wczytajZakładki(sel, html) {
   $('#bks').html('')
   var listy = $('dl', html)
   for (var i = 0; i < listy.length; i++) {
-    $('#bks').append('<div id="bk' + i + '" class="col-md-6 col-lg-4 col-xl-3"></div>')
+    $('#bks').append('<div id="bk' + i + '" class="col-sm-6 col-md-4 col-lg-3"></div>')
 
     var bieżąca_lista = listy.eq(i)
     var bieżące_pozycje = bieżąca_lista.children('dt')
