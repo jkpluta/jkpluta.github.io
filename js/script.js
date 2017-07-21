@@ -62,5 +62,5 @@ function wczytajInformacje(sel, html) {
 
 $(document).ready(function() {
   pobierzInformacje('#info', 'https://jkpluta.github.io/info.html')
-  pobierzZakładki('#bks', 'https://jkpluta.github.io/bookmarks.html')
+  pobierzZakładki('#bke', 'https://jkpluta.github.io/bookmarks.html')
 })
