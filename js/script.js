@@ -44,10 +44,12 @@ function updateBookmarks(sel, base, html) {
 function updateIcons(sel, base, html) {
   $(sel).html('')
   var links = $('a[icon]', html)
+  $(sel).append('<p>')
   for (var i = 0; i < links.length; i++) {
     var link = links.eq(i)
     $(sel).append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON') + '" alt="' + link.text() + '" title="' + link.text() + '"></a> ')
   }
+  $(sel).append('</p>')
 }
 
 function updateInfo(sel, base, html) {
