@@ -68,4 +68,5 @@ $(document).ready(function() {
   startAjax('#info', '#info', 'https://jkpluta.github.io', '/info.html', updateInfo)
   startAjax('#icns', '#icns', 'https://jkpluta.github.io', '/icons.html', updateIcons)
   startAjax('#bks', '#bke', 'https://jkpluta.github.io', '/bookmarks.html', updateBookmarks)
+  $('#google').focus()
 })
