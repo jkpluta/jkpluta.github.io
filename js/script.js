@@ -42,6 +42,7 @@ function updateBookmarks(sel, base, html) {
 
     $('#bk' + i).append('</dl></p>')
   }
+  $(sel).find('a').attr('target', '_blank')
 }
 
 function updateIcons(sel, base, html) {
@@ -56,6 +57,7 @@ function updateIcons(sel, base, html) {
       $(sel).append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON') + '" alt="' + link.text() + '" title="' + link.text() + '" width="32" height="32"></a> ')
   }
   $(sel).append('</p>')
+  $(sel).find('a').attr('target', '_blank')
 }
 
 function updateInfo(sel, base, html) {
