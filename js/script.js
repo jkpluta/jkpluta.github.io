@@ -33,7 +33,7 @@ function updateBookmarks(sel, base, html) {
       if (bieżące_linki.length > 0) {
         var link = bieżące_linki.first()
         if (link.attr('ICON_URI') != null)
-          $('#bk' + i).append('<dt><a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="' + link.text() + '" title="' + link.text() + '" width="16" height="16"> ' + link.text() + '</a></dt>')
+          $('#bk' + i).append('<dt><a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="" title="' + link.text() + '" width="16" height="16"> ' + link.text() + '</a></dt>')
         else
           $('#bk' + i).append('<dt>' + link[0].outerHTML + '</dt>')
       }
