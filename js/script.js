@@ -1,5 +1,5 @@
 function startAjax(sel, spnr, base, href, func) {
-  $(spnr).html('<img src="./img/spinner.gif">')
+  $(spnr).html('<img src="https://jkpluta.github.io/img/spinner.gif">')
   $.ajax({
     url: base + href,
     cache: false,
@@ -8,7 +8,7 @@ function startAjax(sel, spnr, base, href, func) {
       func(sel, base, html)
     },
     error: function(xhr, status, error) {
-      $(spnr).html('<img src="./img/error.png"> <b>' + status + '</b> <i>' + error + "</i>")
+      $(spnr).html('<img src="https://jkpluta.github.io/img/error.png"> <b>' + status + '</b> <i>' + error + "</i>")
     }
   })
 }
