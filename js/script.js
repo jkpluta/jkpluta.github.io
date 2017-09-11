@@ -1,3 +1,4 @@
+const base_url = "https://jkpluta.github.io";
 function start(sel, spnr, href, func) {
   if (spnr != null)
       $(spnr).html('<img src="../img/spinner.gif">');
