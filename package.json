@@ -1,0 +1,16 @@
+{
+  "main": "index.html",
+  "name": "jkpluta.github.io",
+  "version": "1.0.1",
+  "homepage": "https://jkpluta.github.io",
+  "description": "Eksperymentalna strona startowa",
+  "author": {
+    "name": "Jan K. Pluta",
+    "email": "jkpluta@gmail.com",
+    "url": "jkpluta.github.io"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "http-server -a localhost -p 60080 -o"
+  }
+}
