@@ -11,6 +11,6 @@
   },
   "license": "MIT",
   "scripts": {
-    "start": "http-server -a localhost -p 60080 -o"
+    "start": "http-server -a localhost -p 60080 -o -c-1"
   }
 }
