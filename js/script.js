@@ -56,10 +56,47 @@ function updateMainIcons(sel, html) {
   $(sel).append('</p>');
   $(sel).find('a').attr('target', '_blank');
 }
+function startJson(sel, spnr, href, func) {
+    if (spnr != null)
+        $(spnr).html('<img src="../img/spinner.gif">');
+    $.ajax({
+        url: href,
+        dataType: "json",
+        method: "GET",
+        cache: false,
+        success: function (html) {
+            $(spnr).html('');
+            func(sel, html);
+        },
+        error: function (xhr, status, error) {
+            if (spnr != null)
+                $(spnr).html('<img src="../img/error.png"> <b>' + status + '</b> <i>' + error + '</i>');
+        }
+    });
+}
+function updateMainGists(sel, data) {
+    $(sel).html('<dt><h1>Zapiski</h1><dl></dl></dt>');
+    var gists = data;
+    for (var idx in gists) {
+        var gist = gists[idx];
+        if (gist.description === 'Jan K. Pluta')
+            startJson(sel, null, gist.files['bookmark.json'].raw_url, updateMainGist);
+    }
+}
+function updateMainGist(sel, data) {
+    if (data.type === "jkpluta.bookmark") {
+        $(sel).append('<div id="bk' + i + '" class="col-sm-6 col-md-4 col-lg-3"></div>');
+        var link = $('<div class="col-sm-6 col-md-4 col-lg-3"><a></a>').appendTo($(sel)).children('a:first');
+        link.attr('href', data.url);
+        link.text(data.title);
+    }
+}
 function startMain(href) {
   start('#info', '#info', '/info.html', updateMainInfo);
   start('#bks', '#bke', '/bookmarks.html', updateMainBookmarks);
   start('#icns', '#icns', '/icons.html', updateMainIcons);
+  start('#icns', '#icns', '/icons.html', updateMainIcons);
+  startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
   $('#google').focus();
 }
 $(document).ready(function() {
