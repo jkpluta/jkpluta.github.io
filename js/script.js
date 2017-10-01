@@ -75,7 +75,7 @@ function startJson(sel, spnr, href, func) {
     });
 }
 function updateMainGists(sel, data) {
-    $(sel).html('<dt><h1>Zapiski</h1><dl></dl></dt>');
+    $(sel).html('<dt><h4>Zapiski</h4><dl></dl></dt>');
     var gists = data;
     for (var idx in gists) {
         var gist = gists[idx];
@@ -85,10 +85,11 @@ function updateMainGists(sel, data) {
 }
 function updateMainGist(sel, data) {
     if (data.type === "jkpluta.bookmark") {
-        $(sel).append('<div id="bk' + i + '" class="col-sm-6 col-md-4 col-lg-3"></div>');
-        var link = $('<div class="col-sm-6 col-md-4 col-lg-3"><a></a>').appendTo($(sel)).children('a:first');
+        var link = $('<dt><a></a></dt>').appendTo($(sel).find('dl:first')).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
+        if (data.description != null)
+            link.after(' &mdash; <span>' + data.description + '</span>');
     }
 }
 function startMain(href) {
