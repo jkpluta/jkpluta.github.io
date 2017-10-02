@@ -89,10 +89,10 @@ function updateMainGist(sel, data) {
         var link = $('<div class="col-4"><a></a></div>').appendTo($(sel)).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
-        var description = "";
         if (data.description != null)
-            description = data.description;
-        link.parent().after('<div class="col-8">' + description + '</div>');
+            link.parent().after('<div class="col-8">' + data.description + '</div>');
+        else
+            link.parent().after('<div class="col-8"><i>Proponowana zakładka</i></div>');
     }
 }
 function startMain(href) {
