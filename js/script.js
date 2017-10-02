@@ -75,8 +75,9 @@ function startJson(sel, spnr, href, func) {
     });
 }
 function updateMainGists(sel, data) {
-    $(sel).html('<dt><h4>Zapiski</h4><dl></dl></dt>');
     var gists = data;
+    if (gists.length == 0)
+        $(sel).prev().hide();
     for (var idx in gists) {
         var gist = gists[idx];
         if (gist.description === 'Jan K. Pluta')
@@ -85,11 +86,13 @@ function updateMainGists(sel, data) {
 }
 function updateMainGist(sel, data) {
     if (data.type === "jkpluta.bookmark") {
-        var link = $('<dt><a></a></dt>').appendTo($(sel).find('dl:first')).children('a:first');
+        var link = $('<div class="col-4"><a></a></div>').appendTo($(sel)).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
+        var description = "";
         if (data.description != null)
-            link.after(' &mdash; <span>' + data.description + '</span>');
+            description = data.description;
+        link.parent().after('<div class="col-8">' + description + '</div>');
     }
 }
 function startMain(href) {
