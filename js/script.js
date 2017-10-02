@@ -78,6 +78,8 @@ function updateMainGists(sel, data) {
     var gists = data;
     if (gists.length == 0)
         $(sel).prev().hide();
+    else
+        $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
     for (var idx in gists) {
         var gist = gists[idx];
         if (gist.description === 'Jan K. Pluta')
