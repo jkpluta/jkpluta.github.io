@@ -88,13 +88,13 @@ function updateMainGists(sel, data) {
 }
 function updateMainGist(sel, data) {
     if (data.type === "jkpluta.bookmark") {
-        var link = $('<div class="col-4"><a></a></div>').appendTo($(sel)).children('a:first');
+        var link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a></a></div>').appendTo($(sel)).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
         if (data.description != null)
-            link.parent().after('<div class="col-8">' + data.description + '</div>');
+            link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
         else
-            link.parent().after('<div class="col-8"><i>Proponowana zakładka</i></div>');
+            link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
     }
 }
 function startMain(href) {
