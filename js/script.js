@@ -88,7 +88,7 @@ function updateMainGists(sel, data) {
 }
 function updateMainGist(sel, data) {
     if (data.type === "jkpluta.bookmark") {
-        var link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a></a></div>').appendTo($(sel)).children('a:first');
+        var link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a></div>').appendTo($(sel)).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
         if (data.description != null)
