@@ -16,20 +16,19 @@ DO NOT EDIT! -->
 <DT><A HREF="http://meteo.icm.edu.pl/" ADD_DATE="1502892741" icon_uri="http://meteo.icm.edu.pl/favicon.ico"> Meteo.pl</A>
 <DT><A HREF="http://www.teleman.pl/" ADD_DATE="1502899842" icon_uri="http://www.teleman.pl/favicon.ico"> Program TV</A>
 <DT><A HREF="http://florydziak.com/blogger/" ADD_DATE="1502892741" icon_uri="https://i1.wp.com/florydziak.com/blogger/wp-content/uploads/2017/07/cropped-BD272712-3FAB-4E81-8884-0DCBD940C0B2-e1499269620844.png?fit=192%2C192">  Rakiety, aligatory i komary</A>
-<DT gistid="db92a2287c4d5b108e7d3d27ee3954eb"><A HREF="http://www.spacex.com.pl/" icon_uri="http://www.spacex.com.pl/favicon.ico">  SpaceX.com.pl</A> 
 </DL><p>
 <DT><H3 ADD_DATE="1502899842" LAST_MODIFIED="1502899842">Społeczności</H3>
 <DL><p>
 <DT><A HREF="http://bash.org.pl/" ADD_DATE="1502892742" icon_uri="http://bash.org.pl/favicon.ico"> Bash</A>
 <DT><A HREF="http://demotywatory.pl/" ADD_DATE="1502892742" icon_uri="http://demotywatory.pl/favicon.ico"> Demotywatory.pl</A>
-<DT gistid="9e9b5536f6833f225af20635a1fe6251"><A HREF="http://drogakrolow.pl/" icon_uri="http://drogakrolow.pl/wp-content/uploads/2015/07/Favicon.jpg"> Droga Królów</A>     <DT><A HREF="http://pl-pl.facebook.com/" ADD_DATE="1502892742" icon_uri="https://www.facebook.com/rsrc.php/yl/r/H3nktOa7ZMg.ico"> Facebook</A>
+<DT><A HREF="http://pl-pl.facebook.com/" ADD_DATE="1502892742" icon_uri="https://www.facebook.com/rsrc.php/yl/r/H3nktOa7ZMg.ico"> Facebook</A>
 <DT><A HREF="http://www.joemonster.org/" ADD_DATE="1502892742" icon_uri="http://www.joemonster.org/favicon.ico"> Joe Monster.org</A>
 <DT><A HREF="https://nk.pl/" ADD_DATE="1502892742" icon_uri="https://nk.pl/favicon.ico"> NK (Nasza Klasa)</A>
 <DT><A HREF="https://twitter.com/" ADD_DATE="1502899842" icon_uri="https://abs.twimg.com/favicons/favicon.ico"> Twitter</A>
 </DL><p>
 <DT><H3 ADD_DATE="1502899842" LAST_MODIFIED="1502899842">Media</H3>
 <DL><p>
-<DT><A HREF="http://niezalezna.pl/" ADD_DATE="1502899842" icon_uri="http://niezalezna.pl/favicon.ico"> niezalezna.pl</A>
+<DT gistid="2adc854edc3cada9279dfcf4710ac141"><A HREF="http://sf.giang.pl/index.php">Fantastyka</A>       <DT gistid="dc7d62ce240d824556ffb9dc6e1b57c5"><A HREF="http://gosc.pl/" icon_uri="http://gosc.pl/static/themes/gosc-2016/favicon.ico?v=UdiU8l5PlS51yd2Sl4LnQ"> Gość Niedzielny</A>     <DT><A HREF="http://niezalezna.pl/" ADD_DATE="1502899842" icon_uri="http://niezalezna.pl/favicon.ico"> niezalezna.pl</A>
 <DT><A HREF="http://sport.tvp.pl/" ADD_DATE="1502892741" icon_uri="http://s.tvp.pl/files/sport.tvp.pl/favicon.ico"> sport.TVP.pl</A>
 <DT><A HREF="http://www.telewizjarepublika.pl/" ADD_DATE="1502892741" icon_uri="http://www.telewizjarepublika.pl/favicon_64x64.png"> Telewizja Republika</A>
 <DT><A HREF="http://wpolityce.pl/" ADD_DATE="1502892741" icon_uri="http://static.wpolityce.pl/img/favicon.ico"> wPolityce.pl</A>
@@ -94,7 +93,7 @@ DO NOT EDIT! -->
 <DL><p>
 <DT><A HREF="https://www.assembla.com/home" ADD_DATE="1502892742" icon_uri="https://www.assembla.com/wp-content/uploads/2017/03/favicon-192x192.png"> Assembla</A>
 <DT><A HREF="https://app.cloudforge.com/dashboard" ADD_DATE="1502892742" icon_uri="https://app.cloudforge.com/assets/favicon.png"> CloudForge</A>
-<DT gistid="4e87211e0a8e31e3bf3198ca28004219"><A HREF="https://extensionizr.com/!#{&quot;modules&quot;:[&quot;hidden-mode&quot;,&quot;with-bg&quot;,&quot;with-persistent-bg&quot;,&quot;no-options&quot;,&quot;no-override&quot;],&quot;boolean_perms&quot;:[],&quot;match_ptrns&quot;:[]}" icon_uri="https://extensionizr.com/favicon.png"> Extensionizr - boilerplate for your chrome extension</A>   <DT><A HREF="http://fortawesome.github.com/Font-Awesome/" ADD_DATE="1502899842"> Font Awesome</A>
+<DT><A HREF="http://fortawesome.github.com/Font-Awesome/" ADD_DATE="1502899842"> Font Awesome</A>
 <DT><A HREF="https://github.com/" ADD_DATE="1502892742" icon_uri="https://assets-cdn.github.com/favicon.ico"> GitHub</A>
 <DT><A HREF="http://developer.gnome.org/gtk3/3.2/" ADD_DATE="1502899842" icon_uri="http://developer.gnome.org/skin/gnome-16.png"> GTK  3</A>
 <DT><A HREF="http://jquery.com/" ADD_DATE="1502892742" icon_uri="http://jquery.com/jquery-wp-content/themes/jquery.com/i/favicon.ico"> jQuery</A>
