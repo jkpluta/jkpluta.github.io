@@ -66,7 +66,7 @@ $(document).ready(function() {
   $('#create').click(function() {
     $.ajax({
       url: 'https://github.com/login/oauth/access_token',
-      crossDomain: true;
+      crossDomain: true,
       data: {
         client_id: '1f805e59389fa69eb549',
         code: $('#code').val()
