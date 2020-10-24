@@ -36,29 +36,41 @@
             </button>
           </div>
           <div class="modal-body">
-            <form>
+            <form action="https://github.com/login/oauth/access_token" method="POST" accept="application/json" target="iframe">
               <div class="form-group">
                 <label for="code">Kod</label>
-                <input type="text" class="form-control" id="code" placeholder="Kod">
+                <input type="text" class="form-control" id="code" name="code" placeholder="Kod">
               </div>
+              <!--
               <div class="form-group">
                 <label for="password">Hasło</label>
                 <input type="password" class="form-control" id="password" placeholder="Hasło">
               </div>
               <div class="form-group">
-                <label for="client_secret">Sekret</label>
-                <input type="text" class="form-control" id="client_secret" placeholder="Sekret">
-              </div>
-              <div class="form-group">
                 <label for="token">Żeton</label>
                 <input type="text" class="form-control" id="żeton" placeholder="Żeton">
               </div>
+              -->
+              <div class="form-group">
+                <label for="client_id">ID</label>
+                <input type="text" class="form-control" id="client_id" name="client_id" placeholder="ID" value="1f805e59389fa69eb549">
+              </div>
+              <div class="form-group">
+                <label for="client_secret">Sekret</label>
+                <input type="text" class="form-control" id="client_secret" name="client_secret" placeholder="Sekret">
+              </div>
+              <div class="form-group">
+                <input type="submit" value="Utwórz żeton">
+              </div>
             </form>          
+            <iframe name="iframe" src="" style="width:100%;"></iframe>
           </div>
+          <!--
           <div class="modal-footer">
             <button id="create" type="button" class="btn btn-primary">Utwórz żeton</button>
             <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
           </div>
+          -->
         </div>
       </div>
     </div>    
