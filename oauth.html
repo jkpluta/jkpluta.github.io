@@ -26,8 +26,73 @@
         </div>
       </nav>
     </div>      
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Nowy żeton</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Anuluj">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="form-group">
+                <label for="code">Kod</label>
+                <input type="text" class="form-control" id="code" placeholder="Kod">
+              </div>
+              <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" class="form-control" id="password" placeholder="Hasło">
+              </div>
+              <div class="form-group">
+                <label for="token">Żeton</label>
+                <input type="text" class="form-control" id="żeton" placeholder="Żeton">
+              </div>
+            </form>          
+          </div>
+          <div class="modal-footer">
+            <button id="create" type="button" class="btn btn-primary">Utwórz żeton</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+          </div>
+        </div>
+      </div>
+    </div>    
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://jkpluta.github.io/js/script.js"></script>
+    <script>
+$(document).ready(function() {
+  $('#create').click(function() {
+    $.ajax({
+      url: 'https://github.com/login/oauth/access_token',
+      data: {
+        client_id: '1f805e59389fa69eb549',
+        code: $('#code').val()
+      },
+      method: 'POST',
+      cache: false,
+      success: function (data) {
+        alert(data)
+        $('#token').val(data)
+      },
+      error: function (xhr, status, error) {
+        alert(xhr.responseText)
+        alert(xhr.statusText)
+        alert(status)
+        alert(error)
+      }
+    });
+  })
+  var url = new URL(window.location)
+  var code = url.searchParams.get("code")
+  if (code) {
+    $('#code').val(code)
+    $('#modal').modal()
+  } else {
+    window.location = "https://github.com/login/oauth/authorize?client_id=1f805e59389fa69eb549&login=jkpluta"
+  }
+})      
+    </script>
   </body>
 </html>
