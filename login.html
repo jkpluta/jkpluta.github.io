@@ -62,58 +62,43 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://jkpluta.github.io/js/script.js"></script>
     <script>
+function xor(source1, source2) {
+  while (source2.length < source1.length) source2 = source2 + source2
+  var target = ''
+  for(i = 0; i < source1.length / 2; i++) {
+    var val1 = parseInt(source1.substr(i * 2, 2), 16)
+    var val2 = parseInt(source2.substr(i * 2, 2), 16)
+    var val = val1 ^ val2
+    var hex = val.toString(16)
+    if (hex.length < 2) hex = '0' + hex
+    target += hex
+  }
+  return target
+}
+function toHex(source) {
+  var target = '';
+  for(var i = 0 ; i < source.length; i++) {
+    var hex = source.charCodeAt(i).toString(16)
+    if (hex.length < 2) hex = '0' + hex
+    target += hex
+  }
+  return target;
+}
 $(document).ready(function() {
   $('#create').click(function() {
-    /*
-    url = 'https://github.com/login/oauth/access_token?client_id=1f805e59389fa69eb549&client_secret=' + $('#client_secret').val() + '&code=' + $('#code').val()
-    axios({
-      method: 'post',
-      url: url,
-      headers: {
-        accept: 'application/json'
-      }
-    }).then((response) => {
-      alert('3')
-      access_token = response.data.access_token
-      alert(access_token)
-    }).catch(function (error) {
-      alert(error);
-    })
-    $.ajax({
-      url: 'https://github.com/login/oauth/access_token',
-      crossDomain: true,
-      data: {
-        client_id: '1f805e59389fa69eb549',
-        code: $('#code').val()
-      },
-      method: 'POST',
-      cache: false,
-      success: function (data) {
-        alert(data)
-        $('#token').val(data)
-      },
-      error: function (xhr, status, error) {
-        alert(xhr.responseText)
-        alert(xhr.statusText)
-        alert(status)
-        alert(error)
-      }
-    });
-    */
+    var password = toHex($('#password').val())
+    var secret = $('#secret').val()
+    $('#token').val(xor(secret, password))
   })
-  alert('C')
   $.ajax({
     url: '/json/token.json',
     method: 'GET',
     cache: false,
     success: function (data) {
       $('#secret').val(data.secret)
-      $('#modal').modal()
     }
   })
-  alert('Y')
-      $('#modal').modal()
-  alert('Z')
+  $('#modal').modal()
 })
     </script>
   </body>
