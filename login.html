@@ -88,7 +88,9 @@ $(document).ready(function() {
   $('#create').click(function() {
     var password = toHex($('#password').val())
     var secret = $('#secret').val()
-    $('#token').val(xor(secret, password))
+    var token = xor(secret, password)
+    $('#token').val(token)
+    localStorage.setItem('token', token)
   })
   $.ajax({
     url: '/json/token.json',
@@ -99,6 +101,7 @@ $(document).ready(function() {
     }
   })
   $('#modal').modal()
+  $('#token').val(localStorage.getItem('token'))
 })
     </script>
   </body>
