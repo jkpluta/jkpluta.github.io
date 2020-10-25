@@ -101,18 +101,13 @@ $(document).ready(function() {
     });
     */
   })
-  alert('1a')
+  alert('A')
   $.ajax({
     url: '/json/token.json',
     method: 'GET',
     cache: false,
     success: function (data) {
-      alert(data)
-      alert(data.secret)
-      var json = $.parseJSON(data)
-      alert(json)
-      alert(json.secret)
-      $('#secret').val(json.secret)
+      $('#secret').val(data.secret)
       $('#modal').modal()
     },
     error: function (xhr, status, error) {
@@ -122,7 +117,7 @@ $(document).ready(function() {
       alert(error)
     }
   })
-  alert('2a')
+  alert('Z')
 })
     </script>
   </body>
