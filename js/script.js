@@ -105,6 +105,44 @@ function updateMainGist(sel, data) {
             link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
     }
 }
+function saveGist() {
+    var page = { 
+        type: 'jkpluta.bookmark', 
+        title: $('#title').val(), 
+        url: $('#url').val(),
+        description: $('#description').val()
+    };
+    var data = {
+        "description": "Jan K. Pluta",
+        "public": true,
+        "files": {
+            "bookmark.json": {
+                "content": JSON.stringify(page)
+            }
+        }
+    };
+    var token = localStorage.getItem('token');
+    $.ajax({
+        url: 'https://api.github.com/gists',
+        method: "POST",
+        dataType: "json",
+        crossDomain: true,
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(data),
+        cache: false,
+        beforeSend: function (xhr) {
+            xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+            xhr.setRequestHeader("Authorization", "Token " + token);
+            xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+        },
+        success: function (data) {
+            window.location = 'https://jkpluta.github.io/';
+        },
+        error: function (jqXHR, status, error) {
+            alert(error);
+        }
+    });
+}
 function startMain(href) {
   start('#info', '#info', '/info.html', updateMainInfo);
   start('#bks', '#bke', '/bookmarks.html', updateMainBookmarks);
@@ -112,6 +150,9 @@ function startMain(href) {
   start('#icns', '#icns', '/icons.html', updateMainIcons);
   startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
   $('#google').focus();
+  $('#save').click(function() {
+    saveGist();
+});
 }
 $(document).ready(function() {
   startMain();

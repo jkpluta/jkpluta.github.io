@@ -120,45 +120,6 @@
     <script src="https://jkpluta.github.io/js/script.js"></script>
     <script>
 $(document).ready(function() {
-    $('#save').click(function() {
-        var page = { 
-            type: 'jkpluta.bookmark', 
-            title: $('#title').val(), 
-            url: $('#url').val(),
-            description: $('#description').val()
-        }
-        var data = {
-            "description": "Jan K. Pluta",
-            "public": true,
-            "files": {
-                "bookmark.json": {
-                    "content": JSON.stringify(page)
-                }
-            }
-        };
-        var token = localStorage.getItem('token');
-        alert(data)
-        $.ajax({
-            url: 'https://api.github.com/gists',
-            method: "POST",
-            dataType: "json",
-            crossDomain: true,
-            contentType: "application/json; charset=utf-8",
-            data: JSON.stringify(data),
-            cache: false,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                xhr.setRequestHeader("Authorization", "Token " + token);
-                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
-            },
-            success: function (data) {
-                window.location = 'https://jkpluta.github.io/';
-            },
-            error: function (jqXHR, status, error) {
-                alert(error);
-            }
-        });
-    });
 });
     </script>
   </body>
