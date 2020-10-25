@@ -76,22 +76,16 @@ function startJson(sel, spnr, href, func) {
 }
 function updateMainGists(sel, data) {
     var gists = data;
-    /*
-    if (gists.length == 0)
-        $(sel).prev().hide();
-    else
+    var token = localStorage.getItem('token');
+    if(token) {
+        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
+        $('#add-gist').click(function() {
+            $('#modal').modal()
+        })
+    } else {
         $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
-    */
-   var token = localStorage.getItem('token');
-   if(token) {
-       $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
-       $('#add-gist').click(function() {
-           ('#modal').modal();
-       })
-   } else {
-       $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
-   }
-   for (var idx in gists) {
+    }
+    for (var idx in gists) {
         var gist = gists[idx];
         if (gist.description === 'Jan K. Pluta')
             startJson(sel, null, gist.files['bookmark.json'].raw_url, updateMainGist);
