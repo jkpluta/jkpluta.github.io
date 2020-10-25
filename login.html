@@ -91,6 +91,7 @@ $(document).ready(function() {
     var token = xor(secret, password)
     $('#token').val(token)
     localStorage.setItem('token', token)
+    window.location = 'https://jkpluta.github.io'
   })
   $.ajax({
     url: '/json/token.json',
