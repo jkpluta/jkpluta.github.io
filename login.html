@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="pl">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="author" content="Jan K. Pluta">
+    <meta name="description" content="Jan K. Pluta">
+    <link rel="icon" href="./favicon.ico">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro">
+    <link rel="stylesheet" href="https://jkpluta.github.io/css/style.css">
+    <title>Jan K. Pluta</title>
+  </head>
+  <body>
+    <div class="container">
+      <nav id="header" class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:#415200;">
+        <a href="/" class="navbar-brand">
+          <img src="https://jkpluta.github.io/img/icon.png" class="d-inline-block align-top" alt="">
+          Jan K. Pluta
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse justify-content-end" id="navbar">
+          <ul class="navbar-nav">
+          </ul>
+        </div>
+      </nav>
+    </div>      
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Logowanie</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Anuluj">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form >
+              <div class="form-group">
+                <label for="secret">Sekret</label>
+                <input type="text" class="form-control" id="code" name="secret" placeholder="Sekret">
+              </div>
+              <div class="form-group">
+                <label for="password">Hasło</label>
+                <input type="password" class="form-control" id="password" placeholder="Hasło">
+              </div>
+              <div class="form-group">
+                <label for="token">Żeton</label>
+                <input type="text" class="form-control" id="żeton" placeholder="Żeton">
+              </div>
+            </form>          
+          </div>
+          <div class="modal-footer">
+            <button id="create" type="button" class="btn btn-primary">Utwórz żeton</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
+    <script src="https://jkpluta.github.io/js/script.js"></script>
+    <script>
+$(document).ready(function() {
+  $('#create').click(function() {
+    /*
+    url = 'https://github.com/login/oauth/access_token?client_id=1f805e59389fa69eb549&client_secret=' + $('#client_secret').val() + '&code=' + $('#code').val()
+    axios({
+      method: 'post',
+      url: url,
+      headers: {
+        accept: 'application/json'
+      }
+    }).then((response) => {
+      alert('3')
+      access_token = response.data.access_token
+      alert(access_token)
+    }).catch(function (error) {
+      alert(error);
+    })
+    $.ajax({
+      url: 'https://github.com/login/oauth/access_token',
+      crossDomain: true,
+      data: {
+        client_id: '1f805e59389fa69eb549',
+        code: $('#code').val()
+      },
+      method: 'POST',
+      cache: false,
+      success: function (data) {
+        alert(data)
+        $('#token').val(data)
+      },
+      error: function (xhr, status, error) {
+        alert(xhr.responseText)
+        alert(xhr.statusText)
+        alert(status)
+        alert(error)
+      }
+    });
+    */
+  })
+  alert('1')
+  $.ajax({
+    url: '/json/token.json',
+    method: 'GET',
+    cache: false,
+    success: function (data) {
+      alert(data)
+      $('#secret').val(data)
+      $('#modal').modal()
+    },
+    error: function (xhr, status, error) {
+      alert(xhr.responseText)
+      alert(xhr.statusText)
+      alert(status)
+      alert(error)
+    }
+  })
+  alert('2')
+})
+    </script>
+  </body>
+</html>
