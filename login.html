@@ -101,7 +101,7 @@ $(document).ready(function() {
     });
     */
   })
-  alert('B')
+  alert('C')
   $.ajax({
     url: '/json/token.json',
     method: 'GET',
@@ -109,14 +109,10 @@ $(document).ready(function() {
     success: function (data) {
       $('#secret').val(data.secret)
       $('#modal').modal()
-    },
-    error: function (xhr, status, error) {
-      alert(xhr.responseText)
-      alert(xhr.statusText)
-      alert(status)
-      alert(error)
     }
   })
+  alert('Y')
+      $('#modal').modal()
   alert('Z')
 })
     </script>
