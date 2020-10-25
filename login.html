@@ -105,9 +105,9 @@ $(document).ready(function() {
   $.ajax({
     url: '/json/token.json',
     method: 'GET',
-    dataType: 'json',
     cache: false,
     success: function (data) {
+      alert(data)
       var json = $.parseJSON(data)
       alert(json.secret)
       $('#secret').val(json.secret)
