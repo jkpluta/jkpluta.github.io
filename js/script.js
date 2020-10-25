@@ -102,8 +102,8 @@ function updateMainGist(sel, data) {
         var token = localStorage.getItem('token');
         var link = null
         if(token) {
-            link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a> <i id="del-gist-X" class="fa fa-minus"></i></div>').appendTo($(sel)).children('a:first');
-            $('#del-gist').click(function() {
+            link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a> <i id="del-gist-X" class="fa fa-times"></i></div>').appendTo($(sel)).children('a:first');
+            $('#del-gist-X').click(function() {
                 alert("-");
             })
         } else {
