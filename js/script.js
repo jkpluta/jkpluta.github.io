@@ -83,7 +83,10 @@ function updateMainGists(sel, data) {
             $('#modal').modal()
         })
     } else {
-        $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
+        if (gists.length == 0)
+            $(sel).prev().hide();
+        else
+            $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
     }
     for (var idx in gists) {
         var gist = gists[idx];
