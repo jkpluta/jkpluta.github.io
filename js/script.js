@@ -86,7 +86,7 @@ function updateMainGists(sel, data) {
    if(token) {
        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
        $('#add-gist').click(function() {
-           alert("+");
+           ('#modal').modal();
        })
    } else {
        $(sel).prev().append('<div class="col-12"><h4>Zapiski</h4></div>');
@@ -99,24 +99,13 @@ function updateMainGists(sel, data) {
 }
 function updateMainGist(sel, data) {
     if (data.type === "jkpluta.bookmark") {
-        var token = localStorage.getItem('token');
-        var link = null
-        if(token) {
-            link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a> <i id="del-gist-X" class="fa fa-times"></i></div>').appendTo($(sel)).children('a:first');
-        } else {
-            link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a></div>').appendTo($(sel)).children('a:first');
-        }
+        var link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a></div>').appendTo($(sel)).children('a:first');
         link.attr('href', data.url);
         link.text(data.title);
         if (data.description != null)
             link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
         else
             link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
-        if(token) {
-            $('#del-gist-X').click(function() {
-                alert("-");
-            })
-        }
     }
 }
 function startMain(href) {

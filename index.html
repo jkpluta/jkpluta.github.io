@@ -82,8 +82,44 @@
 
     </div>
 
+    <div id="modal" class="modal" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title">Nowy zapisek</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Anuluj">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+            <form >
+              <div class="form-group">
+                <label for="title">Tytuł</label>
+                <input type="text" class="form-control" id="title" name="title" placeholder="Tytuł">
+              </div>
+              <div class="form-group">
+                <label for="url">Adres</label>
+                <input type="text" class="form-control" id="url" name="url" placeholder="Adres">
+              </div>
+              <div class="form-group">
+                <label for="description">Opis</label>
+                <textarea type="text" rows="20" class="form-control" id="description" name="description" placeholder="Opis"></textarea>
+              </div>
+            </form>          
+          </div>
+          <div class="modal-footer">
+            <button id="create" type="button" class="btn btn-primary">Utwórz zapisek</button>
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
+          </div>
+        </div>
+      </div>
+    </div>    
+
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
     <script src="https://jkpluta.github.io/js/script.js"></script>
+    <script>
+      // $('#modal').modal()
+    </script>
   </body>
 </html>
