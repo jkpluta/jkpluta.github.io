@@ -39,15 +39,15 @@
             <form >
               <div class="form-group">
                 <label for="secret">Sekret</label>
-                <input type="text" class="form-control" id="code" name="secret" placeholder="Sekret">
+                <input type="text" class="form-control" id="secret" name="secret" placeholder="Sekret">
               </div>
               <div class="form-group">
                 <label for="password">Hasło</label>
-                <input type="password" class="form-control" id="password" placeholder="Hasło">
+                <input type="password" class="form-control" id="password" name="password" placeholder="Hasło">
               </div>
               <div class="form-group">
                 <label for="token">Żeton</label>
-                <input type="text" class="form-control" id="żeton" placeholder="Żeton">
+                <input type="text" class="form-control" id="token" name="token" placeholder="Żeton">
               </div>
             </form>          
           </div>
@@ -101,7 +101,7 @@ $(document).ready(function() {
     });
     */
   })
-  alert('A')
+  alert('B')
   $.ajax({
     url: '/json/token.json',
     method: 'GET',
