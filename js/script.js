@@ -103,9 +103,6 @@ function updateMainGist(sel, data) {
         var link = null
         if(token) {
             link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a> <i id="del-gist-X" class="fa fa-times"></i></div>').appendTo($(sel)).children('a:first');
-            $('#del-gist-X').click(function() {
-                alert("-");
-            })
         } else {
             link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a></div>').appendTo($(sel)).children('a:first');
         }
@@ -115,6 +112,11 @@ function updateMainGist(sel, data) {
             link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
         else
             link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
+        if(token) {
+            $('#del-gist-X').click(function() {
+                alert("-");
+            })
+        }
     }
 }
 function startMain(href) {
