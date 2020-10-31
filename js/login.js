@@ -27,8 +27,8 @@ function startLogin(href) {
         var token = xor(secret, password);
         $('#token').val(token);
         localStorage.setItem('token', token);
-        window.location = 'https://jkpluta.github.io';
-    })
+        ('#modal').modal('hide')
+    });
     $.ajax({
         url: '/json/token.json',
         method: 'GET',
@@ -36,7 +36,11 @@ function startLogin(href) {
         success: function (data) {
             $('#secret').val(data.secret)
         }
-    })
+    });
+    $('#modal').on('hidden.bs.modal', function () {
+        window.location = 'https://jkpluta.github.io';
+    });
+
     $('#modal').modal();
     $('#token').val(localStorage.getItem('token'));
 }
