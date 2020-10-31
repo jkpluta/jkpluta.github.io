@@ -27,7 +27,7 @@ function startLogin(href) {
         var token = xor(secret, password);
         $('#token').val(token);
         localStorage.setItem('token', token);
-        ('#modal').modal('hide')
+        $('#modal').modal('hide')
     });
     $.ajax({
         url: '/json/token.json',
