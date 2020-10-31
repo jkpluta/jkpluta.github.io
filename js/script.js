@@ -106,7 +106,7 @@ function updateMainGist(sel, data) {
         } else {
             item.append('<b>' + data.title + '</b>')            
         }
-        if (data.description !== '')
+        if (data.description != null && data.description !== '')
             item.after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
         else
             item.after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
