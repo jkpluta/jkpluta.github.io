@@ -110,14 +110,6 @@ function updateMainGist(sel, data) {
             item.after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
         else
             item.after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
-        /* var link = $('<div class="col-sm-12 col-md-6 col-lg-4"><a target="_blank"></a></div>').appendTo($(sel)).children('a:first');
-        link.attr('href', data.url);
-        link.text(data.title);
-        if (data.description != null)
-            link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
-        else
-            link.parent().after('<div class="col-sm-12 col-md-6 col-lg-8"><i>Proponowana zakładka</i></div>');
-        */
     }
 }
 function saveGist() {
