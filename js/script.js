@@ -2,17 +2,15 @@ var base_url = "https://jkpluta.github.io";
 function start(sel, spnr, href, func) {
   if (spnr != null)
       $(spnr).html('<img src="../img/spinner.gif">');
-  $.ajax({
-      url: base_url + href,
-      cache: false,
-      success: function (html) {
-          $(spnr).html('');
-          func(sel, html);
-      },
-      error: function (xhr, status, error) {
-          if (spnr != null)
-              $(spnr).html('<img src="../img/error.png"> <b>' + status + '</b> <i>' + error + '</i>');
-      }
+  fetch(base_url + href)
+  .then(response => response.text())
+  .then(html => {
+    $(spnr).html('');
+    func(sel, html);
+  })
+  .catch(error => {
+    if (spnr != null)
+      $(spnr).html('<img src="../img/error.png"> <b>' + error + '</b>');
   });
 }
 function updateMainInfo(sel, html) {
@@ -59,19 +57,15 @@ function updateMainIcons(sel, html) {
 function startJson(sel, spnr, href, func) {
     if (spnr != null)
         $(spnr).html('<img src="../img/spinner.gif">');
-    $.ajax({
-        url: href,
-        dataType: "json",
-        method: "GET",
-        cache: false,
-        success: function (html) {
-            $(spnr).html('');
-            func(sel, html);
-        },
-        error: function (xhr, status, error) {
-            if (spnr != null)
-                $(spnr).html('<img src="../img/error.png"> <b>' + status + '</b> <i>' + error + '</i>');
-        }
+    fetch(href)
+    .then(response => response.json())
+    .then(json => {
+        $(spnr).html('');
+        func(sel, json);
+    })
+    .catch(error => {
+        if (spnr != null)
+            $(spnr).html('<img src="../img/error.png"> <b>' + error + '</b>');
     });
 }
 function updateMainGists(sel, data) {
