@@ -2,7 +2,7 @@ self.addEventListener('install', event => {
     console.log('Install...');
     event.waitUntil(
         caches.open('jkpluta').then(function(cache) {
-            return cache.addAll(['index.html', 'info.html', 'bookmarks.html', 'icons.html', 'manifest.json', 'service-worker.js', 'js/script.js', 'img/error.png']);
+            return cache.addAll(['index.html', 'info.html', 'bookmarks.html', 'icons.html', 'manifest.json', 'service-worker.js', 'favicon.ico', 'js/script.js', 'img/error.png']);
         })
     );
 });
