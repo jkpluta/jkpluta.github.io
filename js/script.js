@@ -104,24 +104,25 @@ function updateMainGist(gist, data) {
         if (token) {
             item.append(' <i id="' + gist.id + '" style="cursor:pointer;color:red;" class="fa fa-times"></i>')
             $('#' + gist.id).click(function() {
-                alert(gist.id);
-                $.ajax({
-                    url: 'https://api.github.com/gists/' + gist.id,
-                    method: "DELETE",
-                    crossDomain: true,
-                    cache: false,
-                    beforeSend: function (xhr) {
-                        xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                        xhr.setRequestHeader("Authorization", "Token " + token);
-                        xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
-                    },
-                    success: function (data) {
-                        window.location = 'https://jkpluta.github.io/';
-                    },
-                    error: function (jqXHR, status, error) {
-                        alert(error);
-                    }
-                });
+                if(confirm('Czy chcesz usunąć "' + data.title + '"?')) {
+                    $.ajax({
+                        url: 'https://api.github.com/gists/' + gist.id,
+                        method: "DELETE",
+                        crossDomain: true,
+                        cache: false,
+                        beforeSend: function (xhr) {
+                            xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                            xhr.setRequestHeader("Authorization", "Token " + token);
+                            xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                        },
+                        success: function (data) {
+                            window.location = 'https://jkpluta.github.io/';
+                        },
+                        error: function (jqXHR, status, error) {
+                            alert(error);
+                        }
+                    });
+                }
             })
         }
         if (data.description != null && data.description !== '')
