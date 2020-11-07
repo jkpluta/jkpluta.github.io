@@ -11,41 +11,49 @@
     {
       "src": "img/icon-72x72.png",
       "sizes": "72x72",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-96x96.png",
       "sizes": "96x96",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-128x128.png",
       "sizes": "128x128",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-144x144.png",
       "sizes": "144x144",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-152x152.png",
       "sizes": "152x152",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-192x192.png",
       "sizes": "192x192",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-384x384.png",
       "sizes": "384x384",
+      "purpose": "any maskable",
       "type": "image/png"
     },
     {
       "src": "img/icon-512x512.png",
       "sizes": "512x512",
+      "purpose": "any maskable",
       "type": "image/png"
     }
   ]
