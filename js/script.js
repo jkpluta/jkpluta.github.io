@@ -72,7 +72,7 @@ function updateMainGists(sel, data) {
     var gists = data;
     var token = localStorage.getItem('token');
     if(token) {
-        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
+        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" style="cursor:pointer;color:yellow;" class="fa fa-plus"></i></h4></div>');
         $('#add-gist').click(function() {
             $('#modal').modal()
         })
@@ -85,13 +85,13 @@ function updateMainGists(sel, data) {
     for (var idx in gists) {
         var gist = gists[idx];
         if (gist.description === 'Jan K. Pluta')
-            startJson(sel, null, gist.files['bookmark.json'].raw_url, updateMainGist);
+            startJson(gist, null, gist.files['bookmark.json'].raw_url, updateMainGist);
     }
 }
-function updateMainGist(sel, data) {
+function updateMainGist(gist, data) {
     if (data.type === "jkpluta.bookmark") {
         var item = $('<div class="col-sm-12 col-md-6 col-lg-4"></div>');
-        $(sel).append(item)
+        $('#gists').append(item)
         if (data.url !== '') {
             var link = $('<a target="_blank"></a>');
             item.append(link);
@@ -99,6 +99,30 @@ function updateMainGist(sel, data) {
             link.text(data.title);
         } else {
             item.append('<b>' + data.title + '</b>')            
+        }
+        var token = localStorage.getItem('token');
+        if (token) {
+            item.append(' <i id="' + gist.id + '" style="cursor:pointer;color:red;" class="fa fa-times"></i>')
+            $('#' + gist.id).click(function() {
+                alert(gist.id);
+                $.ajax({
+                    url: 'https://api.github.com/gists/' + gist.id,
+                    method: "DELETE",
+                    crossDomain: true,
+                    cache: false,
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                        xhr.setRequestHeader("Authorization", "Token " + token);
+                        xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                    },
+                    success: function (data) {
+                        window.location = 'https://jkpluta.github.io/';
+                    },
+                    error: function (jqXHR, status, error) {
+                        alert(error);
+                    }
+                });
+            })
         }
         if (data.description != null && data.description !== '')
             item.after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
