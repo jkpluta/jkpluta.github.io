@@ -75,6 +75,10 @@ function updateMainGists(sel, data) {
         $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
         $('#add-gist').click(function() {
             $('#gist-id').val('');
+            $('#title').val('')
+            $('#url').val('')
+            $('#description').val('')
+        $('.modal-title').text('Nowy zapisek')
             $('#modal').modal();
         })
     } else {
@@ -110,6 +114,7 @@ function updateMainGist(gist, data) {
                 $('#title').val(data.title)
                 $('#url').val(data.url)
                 $('#description').val(data.description)
+                $('.modal-title').text('Edycja zapiska')
                 $('#modal').modal();
             });
             $('#del-' + gist.id).click(function() {
