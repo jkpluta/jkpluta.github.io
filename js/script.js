@@ -72,9 +72,10 @@ function updateMainGists(sel, data) {
     var gists = data;
     var token = localStorage.getItem('token');
     if(token) {
-        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" style="cursor:pointer;color:yellow;" class="fa fa-plus"></i></h4></div>');
+        $(sel).prev().append('<div class="col-12"><h4>Zapiski <i id="add-gist" class="fa fa-plus"></i></h4></div>');
         $('#add-gist').click(function() {
-            $('#modal').modal()
+            $('#gist-id').val('');
+            $('#modal').modal();
         })
     } else {
         if (gists.length == 0)
@@ -102,8 +103,16 @@ function updateMainGist(gist, data) {
         }
         var token = localStorage.getItem('token');
         if (token) {
-            item.append(' <i id="' + gist.id + '" style="cursor:pointer;color:red;" class="fa fa-times"></i>')
-            $('#' + gist.id).click(function() {
+            item.append(' <i id="edit-' + gist.id + '" class="fa fa-edit"></i>')
+            item.append(' <i id="del-' + gist.id + '" class="fa fa-times"></i>')
+            $('#edit-' + gist.id).click(function() {
+                $('#gist-id').val(gist.id)
+                $('#title').val(data.title)
+                $('#url').val(data.url)
+                $('#description').val(data.description)
+                $('#modal').modal();
+            });
+            $('#del-' + gist.id).click(function() {
                 if(confirm('Czy chcesz usunąć "' + data.title + '"?')) {
                     $.ajax({
                         url: 'https://api.github.com/gists/' + gist.id,
@@ -123,7 +132,7 @@ function updateMainGist(gist, data) {
                         }
                     });
                 }
-            })
+            });
         }
         if (data.description != null && data.description !== '')
             item.after('<div class="col-sm-12 col-md-6 col-lg-8">' + data.description + '</div>');
@@ -132,6 +141,7 @@ function updateMainGist(gist, data) {
     }
 }
 function saveGist() {
+    var gistId = $('#gist-id').val();
     var page = { 
         type: 'jkpluta.bookmark', 
         title: $('#title').val(), 
@@ -148,26 +158,49 @@ function saveGist() {
         }
     };
     var token = localStorage.getItem('token');
-    $.ajax({
-        url: 'https://api.github.com/gists',
-        method: "POST",
-        dataType: "json",
-        crossDomain: true,
-        contentType: "application/json; charset=utf-8",
-        data: JSON.stringify(data),
-        cache: false,
-        beforeSend: function (xhr) {
-            xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-            xhr.setRequestHeader("Authorization", "Token " + token);
-            xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
-        },
-        success: function (data) {
-            window.location = 'https://jkpluta.github.io/';
-        },
-        error: function (jqXHR, status, error) {
-            alert(error);
-        }
-    });
+    if (gistId !== '') {
+        $.ajax({
+            url: 'https://api.github.com/gists/' + gistId,
+            method: "PATCH",
+            dataType: "json",
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            cache: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                xhr.setRequestHeader("Authorization", "Token " + token);
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+            },
+            success: function (data) {
+                window.location = 'https://jkpluta.github.io/';
+            },
+            error: function (jqXHR, status, error) {
+                alert(error);
+            }
+        });
+    } else {
+        $.ajax({
+            url: 'https://api.github.com/gists',
+            method: "POST",
+            dataType: "json",
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            cache: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                xhr.setRequestHeader("Authorization", "Token " + token);
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+            },
+            success: function (data) {
+                window.location = 'https://jkpluta.github.io/';
+            },
+            error: function (jqXHR, status, error) {
+                alert(error);
+            }
+        });
+    }
 }
 function startMain(href) {
   start('#info', '#info', '/info.html', updateMainInfo);

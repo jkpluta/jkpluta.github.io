@@ -13,6 +13,29 @@
     <link rel="stylesheet" href="https://jkpluta.github.io/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Jan K. Pluta</title>
+    <style>
+      i.fa {
+        cursor: pointer;
+      }
+      i.fa-plus {
+        color: orange;
+      }
+      i.fa-plus:hover {
+        color: yellow;
+      }
+      i.fa-times {
+        color: darkred;
+      }
+      i.fa-times:hover {
+        color: red;
+      }
+      i.fa-edit {
+        color: darkgreen;
+      }
+      i.fa-edit:hover {
+        color: green;
+      }
+    </style>
   </head>
   <body>
     <div class="container">
@@ -96,6 +119,7 @@
           </div>
           <div class="modal-body">
             <form >
+              <input id="gist-id" type="hidden"></input>
               <div class="form-group">
                 <label for="title">Tytuł</label>
                 <input type="text" class="form-control" id="title" name="title" placeholder="Tytuł">

@@ -29,8 +29,9 @@ function startLogin(href) {
         localStorage.setItem('token', token);
         $('#modal').modal('hide')
     });
+    alert('s')
     $.ajax({
-        url: '/json/token.json',
+        url: 'https://jkpluta.github.io/json/token.json',
         method: 'GET',
         cache: false,
         success: function (data) {
