@@ -1,0 +1,13 @@
+i.fa {
+  cursor: pointer;
+  color: silver;
+}
+i.fa-plus:hover {
+  color: yellow;
+}
+i.fa-times:hover {
+  color: red;
+}
+i.fa-edit:hover {
+  color: green;
+}
