@@ -1,8 +1,8 @@
 {
   "name": "Jan K. Pluta",
   "short_name": "Jan K. Pluta",
-  "theme_color": "#222222",
-  "background_color": "#E0E0E0",
+  "theme_color": "#212529",
+  "background_color": "#212529",
   "display": "standalone",
   "scope": "/",
   "start_url": "https://jkpluta.github.io/index.html",
