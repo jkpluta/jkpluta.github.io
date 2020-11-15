@@ -1,4 +1,5 @@
 var base_url = "https://jkpluta.github.io";
+var start_url = base_url + '/index.html';
 function start(sel, spnr, href, func) {
   if (spnr != null)
       $(spnr).html('<img src="../img/spinner.gif">');
@@ -130,7 +131,7 @@ function updateMainGist(gist, data) {
                             xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
                         },
                         success: function (data) {
-                            window.location = 'https://jkpluta.github.io/';
+                            window.location = start_url;
                         },
                         error: function (jqXHR, status, error) {
                             alert(error);
@@ -178,7 +179,7 @@ function saveGist() {
                 xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
             },
             success: function (data) {
-                window.location = 'https://jkpluta.github.io/';
+                window.location = start_url;
             },
             error: function (jqXHR, status, error) {
                 alert(error);
@@ -199,13 +200,59 @@ function saveGist() {
                 xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
             },
             success: function (data) {
-                window.location = 'https://jkpluta.github.io/';
+                window.location = start_url;
             },
             error: function (jqXHR, status, error) {
                 alert(error);
             }
         });
     }
+}
+function xor(source1, source2) {
+    while (source2.length < source1.length) source2 = source2 + source2;
+    var target = '';
+    for(i = 0; i < source1.length / 2; i++) {
+        var val1 = parseInt(source1.substr(i * 2, 2), 16);
+        var val2 = parseInt(source2.substr(i * 2, 2), 16);
+        var val = val1 ^ val2;
+        var hex = val.toString(16);
+        if (hex.length < 2) hex = '0' + hex;
+        target += hex;
+    }
+    return target;
+}
+function toHex(source) {
+    var target = '';
+    for(var i = 0 ; i < source.length; i++) {
+        var hex = source.charCodeAt(i).toString(16);
+        if (hex.length < 2) hex = '0' + hex;
+        target += hex;
+    }
+    return target;
+}
+function startLogin(href) {
+    $('#create').click(function() {
+        var password = toHex($('#password').val());
+        var secret = $('#secret').val();
+        var token = xor(secret, password);
+        $('#token').val(token);
+        localStorage.setItem('token', token);
+        $('#login').modal('hide')
+    });
+    $.ajax({
+        url: base_url + '/json/token.json',
+        method: 'GET',
+        cache: false,
+        success: function (data) {
+            $('#secret').val(data.secret)
+        }
+    });
+    $('#login').on('hidden.bs.modal', function () {
+        window.location = start_url;
+    });
+
+    $('#login').modal();
+    $('#token').val(localStorage.getItem('token'));
 }
 function startMain(href) {
   start('#info', '#info', '/info.html', updateMainInfo);
@@ -216,7 +263,10 @@ function startMain(href) {
   $('#google').focus();
   $('#save').click(function() {
     saveGist();
-});
+  });
+  $('#jkp').click(function() {
+    startLogin();
+  })
 }
 $(document).ready(function() {
   startMain();
