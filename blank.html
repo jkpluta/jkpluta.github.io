@@ -8,16 +8,82 @@
     <link rel="icon" href="./favicon.ico">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro|Source+Sans+Pro">
     <link rel="stylesheet" href="css/style.css">
-    <title>Jan K. Pluta | Autoryzacja</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Jan K. Pluta | Nicość</title>
   </head>
   <body>
-    <div class="container">
-      <div id="top" class="row">
-        <div class="col">
+    <div id="container" class="container">
+        <nav id="header" class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:#415200;">
+          <a href="/" class="navbar-brand">
+            <img src="https://jkpluta.github.io/img/icon.png" class="d-inline-block align-top" alt="">
+            Jan K. Pluta
+          </a>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse justify-content-end" id="navbar">
+            <ul class="navbar-nav">
+            </ul>
+          </div>
+        </nav>
+    
+        <div id="top" class="row">
+          <div class="col">
+            <p id="fullscreen" style="cursor: grab;">
+              <i class="fa fa-expand"></i> Wyświetl na pełnym ekranie.
+            </p>          
+          </div>
         </div>
-      </div>
-    </div>      
+
+    </div>
+    
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
-  </body>
+    <script>
+        /* Get the documentElement (<html>) to display the page in fullscreen */
+        var elem = document.documentElement;
+        
+        /* View in fullscreen */
+        function openFullscreen() {
+          if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+          } else if (elem.webkitRequestFullscreen) { /* Safari */
+            elem.webkitRequestFullscreen();
+          } else if (elem.msRequestFullscreen) { /* IE11 */
+            elem.msRequestFullscreen();
+          }
+        }
+        
+        /* Close fullscreen */
+        function closeFullscreen() {
+          if (document.exitFullscreen) {
+            document.exitFullscreen();
+          } else if (document.webkitExitFullscreen) { /* Safari */
+            document.webkitExitFullscreen();
+          } else if (document.msExitFullscreen) { /* IE11 */
+            document.msExitFullscreen();
+          }
+        }
+
+        function isFullscreen()
+        {
+            return (document.fullScreenElement && document.fullScreenElement !== null)
+                 || document.mozFullScreen
+                 || document.webkitIsFullScreen;
+        }
+
+        $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function() {
+            if(isFullscreen()) {
+                $('#container').css('display', 'none');
+            } else {
+                $('#container').css('display', 'block');
+            }
+        });
+
+        $('#fullscreen').click(function() {
+            openFullscreen();
+        });
+
+    </script>
+</body>
 </html>
