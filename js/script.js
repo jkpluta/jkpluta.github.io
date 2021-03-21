@@ -237,6 +237,7 @@ function startLogin(href) {
         var secret = $('#secret').val();
         var token = xor(secret, password);
         $('#token').val(token);
+        localStorage.removeItem('token')
         var page = { 
             type: 'jkpluta.login'
         };
