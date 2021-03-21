@@ -135,7 +135,7 @@ function updateMainGist(gist, data) {
                             window.location = start_url;
                         },
                         error: function (jqXHR, status, error) {
-                            alert(error);
+                            alert($.parseJSON(jqXHR.responseText).message)
                         }
                     });
                 }
@@ -175,15 +175,15 @@ function saveGist() {
             data: JSON.stringify(data),
             cache: false,
             beforeSend: function (xhr) {
-                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                xhr.setRequestHeader("Authorization", "Token " + token);
-                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json")
+                xhr.setRequestHeader("Authorization", "Token " + token)
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code")
             },
             success: function (data) {
                 window.location = start_url;
             },
             error: function (jqXHR, status, error) {
-                alert(error);
+                alert($.parseJSON(jqXHR.responseText).message)
             }
         });
     } else {
@@ -196,15 +196,15 @@ function saveGist() {
             data: JSON.stringify(data),
             cache: false,
             beforeSend: function (xhr) {
-                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                xhr.setRequestHeader("Authorization", "Token " + token);
-                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json")
+                xhr.setRequestHeader("Authorization", "Token " + token)
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code")
             },
             success: function (data) {
                 window.location = start_url;
             },
             error: function (jqXHR, status, error) {
-                alert(error);
+                alert($.parseJSON(jqXHR.responseText).message)
             }
         });
     }
@@ -260,12 +260,12 @@ function startLogin(href) {
             data: JSON.stringify(data),
             cache: false,
             beforeSend: function (xhr) {
-                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                xhr.setRequestHeader("Authorization", "Token " + token);
-                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json")
+                xhr.setRequestHeader("Authorization", "Token " + token)
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code")
             },
             success: function (data) {
-                localStorage.setItem('token', token);
+                localStorage.setItem('token', token)
                 $('#login').modal('hide')
             },
             error: function (jqXHR, status, error) {
