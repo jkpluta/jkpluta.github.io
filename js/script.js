@@ -239,7 +239,8 @@ function startLogin(href) {
         $('#token').val(token);
         localStorage.removeItem('token')
         var page = { 
-            type: 'jkpluta.login'
+            type: 'jkpluta.login',
+            date: Date.now()
         };
         var data = {
             "description": "Jan K. Pluta",
