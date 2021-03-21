@@ -127,9 +127,9 @@ function updateMainGist(gist, data) {
                         crossDomain: true,
                         cache: false,
                         beforeSend: function (xhr) {
-                            xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
-                            xhr.setRequestHeader("Authorization", "Token " + token);
-                            xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+                            xhr.setRequestHeader("Accept", "application/vnd.github.v3+json")
+                            xhr.setRequestHeader("Authorization", "Token " + token)
+                            xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code")
                         },
                         success: function (data) {
                             window.location = start_url;
