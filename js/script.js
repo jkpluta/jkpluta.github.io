@@ -108,6 +108,7 @@ function updateMainGist(gist, data) {
         }
         var token = localStorage.getItem('token');
         if (token) {
+            $('#mnu').css('display', 'inline')
             item.append(' <i id="edit-' + gist.id + '" class="fa fa-edit"></i>')
             item.append(' <i id="del-' + gist.id + '" class="fa fa-times"></i>')
             $('#edit-' + gist.id).click(function() {
@@ -256,9 +257,8 @@ function startLogin(href) {
 }
 function startMain(href) {
   start('#info', '#info', '/info.html', updateMainInfo);
+  start('#icns', '#icns', '/icons.html', updateMainIcons);
   start('#bks', '#bke', '/bookmarks.html', updateMainBookmarks);
-  start('#icns', '#icns', '/icons.html', updateMainIcons);
-  start('#icns', '#icns', '/icons.html', updateMainIcons);
   startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
   $('#google').focus();
   $('#save').click(function() {
