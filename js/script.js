@@ -269,7 +269,7 @@ function startLogin(href) {
                 $('#login').modal('hide')
             },
             error: function (jqXHR, status, error) {
-                alert('Błąd autoryzacji!');
+                alert(jqXHR.responseText)
             }
         });
     });
