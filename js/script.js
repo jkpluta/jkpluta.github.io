@@ -237,8 +237,39 @@ function startLogin(href) {
         var secret = $('#secret').val();
         var token = xor(secret, password);
         $('#token').val(token);
-        localStorage.setItem('token', token);
-        $('#login').modal('hide')
+        var page = { 
+            type: 'jkpluta.login'
+        };
+        var data = {
+            "description": "Jan K. Pluta",
+            "public": false,
+            "files": {
+                "login.json": {
+                    "content": JSON.stringify(page)
+                }
+            }
+        };
+        $.ajax({
+            url: 'https://api.github.com/gists',
+            method: "POST",
+            dataType: "json",
+            crossDomain: true,
+            contentType: "application/json; charset=utf-8",
+            data: JSON.stringify(data),
+            cache: false,
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader("Accept", "application/vnd.github.v3+json");
+                xhr.setRequestHeader("Authorization", "Token " + token);
+                xhr.setRequestHeader("X-GitHub-OTP", "two-factor-code");
+            },
+            success: function (data) {
+                localStorage.setItem('token', token);
+                $('#login').modal('hide')
+            },
+            error: function (jqXHR, status, error) {
+                alert('Błąd autoryzacji!');
+            }
+        });
     });
     $.ajax({
         url: base_url + '/json/token.json',
