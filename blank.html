@@ -13,7 +13,7 @@
   </head>
   <body>
     <div id="container" class="container">
-        <nav id="header" class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:#415200;">
+      <nav id="header" class="navbar navbar-expand-sm navbar-dark bg-faded nfs" style="background:#415200;">
           <a href="/" class="navbar-brand">
             <img src="https://jkpluta.github.io/img/icon.png" class="d-inline-block align-top" alt="">
             Jan K. Pluta
@@ -27,7 +27,17 @@
           </div>
         </nav>
     
-        <div id="top" class="row">
+        <div id="top-fs" class="row">
+          <div class="col-12" style="text-align: right;">
+            <span id="clock" class="clock"></span>
+            &nbsp;
+            <span id="mnu">
+              <a id="power-off" href=""><i class="fa fa-power-off"></i></a>
+            </span>
+          </div>
+        </div>
+
+        <div id="top" class="row nfs">
           <div class="col">
             <p  style="padding-top: 4cm; text-align: center;">
               <i id="fullscreen" class="fa fa-expand" style="cursor: grab; font-size: 2cm;"></i>
@@ -35,7 +45,7 @@
           </div>
         </div>
 
-    </div>
+      </div>
     
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
@@ -74,15 +84,37 @@
 
         $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function() {
             if(isFullscreen()) {
-                $('#container').css('display', 'none');
+                $('.nfs').css('display', 'none');
             } else {
-                $('#container').css('display', 'block');
+                $('.nfs').css('display', 'block');
             }
+        });
+
+        $('.fs').css('display', 'none');
+
+        $('#power-off').click(function() {
+          window.close();
         });
 
         $('#fullscreen').click(function() {
             openFullscreen();
         });
+
+        setInterval(function() {
+
+          var currentTime = new Date();
+          var hours = currentTime.getHours();
+          var minutes = currentTime.getMinutes();
+          var seconds = currentTime.getSeconds();
+
+          minutes = (minutes < 10 ? "0" : "") + minutes;
+          seconds = (seconds < 10 ? "0" : "") + seconds;
+          hours = (hours < 10 ? "0" : "") + hours;
+
+          var currentTimeString = hours + ":" + minutes + ":" + seconds;
+          $(".clock").html(currentTimeString);
+
+        },1000);
 
     </script>
 </body>
