@@ -289,17 +289,19 @@ function startLogin(href) {
     $('#token').val(localStorage.getItem('token'));
 }
 function startMain(href) {
-  start('#info', '#info', '/info.html', updateMainInfo);
-  start('#icns', '#icns', '/icons.html', updateMainIcons);
+  // start('#info', '#info', '/info.html', updateMainInfo);
+  // start('#icns', '#icns', '/icons.html', updateMainIcons);
   start('#bks', '#bke', '/bookmarks.html', updateMainBookmarks);
-  startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
+  // startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
   $('#google').focus();
+  /*
   $('#save').click(function() {
     saveGist();
   });
   $('#jkp').click(function() {
     startLogin();
   })
+  */
 }
 $(document).ready(function() {
   startMain();
