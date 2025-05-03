@@ -28,16 +28,7 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbar">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link" href="#info">Informacje</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#icons">Ikony</a>
-            </li>
-            <li class="nav-item">
               <a class="nav-link" href="#bks">Zakładki</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#gsts">Zapiski</a>
             </li>
           </ul>
         </div>
@@ -66,94 +57,16 @@
         </div>
       </div>
 
-      <div id="main" class="row">
-        <div id="info" class="col">
-        </div>
-      </div>
-
-      <div id="icons" class="row">
-        <div id="icns" class="col">
-        </div>
-      </div>
-
       <div id="bks" class="row">
         <div id="bke" class="col">
         </div>
       </div>
 
-      <div class="row">
-        <div id="gsts" class="col"></div>
-      </div>
-      
-      <div id="gists" class="row">
-      </div>
-
       <footer class="footer">
-        <p class="text-center">Copyright © 2017-2021 Jan K. Pluta</p>
+        <p class="text-center">Copyright © 2017-202 Jan K. Pluta</p>
       </footer>
 
     </div>
-
-    <div id="modal" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Nowy zapisek</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Anuluj">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form >
-              <input id="gist-id" type="hidden">
-              <div class="form-group">
-                <label for="title">Tytuł</label>
-                <input type="text" class="form-control" id="title" name="title" placeholder="Tytuł">
-              </div>
-              <div class="form-group">
-                <label for="url">Adres</label>
-                <input type="text" class="form-control" id="url" name="url" placeholder="Adres">
-              </div>
-              <div class="form-group">
-                <label for="description">Opis</label>
-                <textarea rows="10" class="form-control" id="description" name="description" placeholder="Opis"></textarea>
-              </div>
-            </form>          
-          </div>
-          <div class="modal-footer">
-            <button id="save" type="button" class="btn btn-primary">Utwórz zapisek</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-          </div>
-        </div>
-      </div>
-    </div>    
-
-    <div id="login" class="modal" tabindex="-1" role="dialog">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title">Logowanie</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Anuluj">
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <form >
-              <input type="hidden" id="secret" name="secret">
-              <input type="hidden" class="form-control" id="token" name="token">
-              <div class="form-group">
-                <label for="password">Hasło</label>
-                <input type="password" class="form-control" id="password" name="password" placeholder="Hasło">
-              </div>
-            </form>          
-          </div>
-          <div class="modal-footer">
-            <button id="create" type="button" class="btn btn-primary">Utwórz żeton</button>
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Anuluj</button>
-          </div>
-        </div>
-      </div>
-    </div>    
 
     <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/js/bootstrap.min.js" integrity="sha384-vBWWzlZJ8ea9aCX4pEW3rVHjgjt7zpkNpZk+02D9phzyeVkE+jo0ieGizqPLForn" crossorigin="anonymous"></script>
