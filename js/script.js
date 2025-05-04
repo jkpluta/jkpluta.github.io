@@ -32,9 +32,9 @@ function updateMainBookmarks(sel, html) {
           if (bieżące_linki.length > 0) {
               var link = bieżące_linki.first();
               if (link.attr('ICON_URI') != null)
-                  $('#bk' + i).append('<dt style="margin-bottom:6px;"><a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="" title="' + link.text() + '" width="32" height="32"> ' + link.text() + '</a></dt>');
+                  $('#bk' + i).append('<dt class="ficon"><a href="' + link.attr('href') + '"><img class="ficon" src="' + link.attr('ICON_URI') + '" alt="" title="' + link.text() + '"> ' + link.text() + '</a></dt>');
               else
-                  $('#bk' + i).append('<dt style="margin-bottom:6px;">' + link[0].outerHTML + '</dt>');
+                  $('#bk' + i).append('<dt class="ficon">' + link[0].outerHTML + '</dt>');
           }
       }
       $('#bk' + i).append('</dl></p>');

@@ -11,3 +11,9 @@ i.fa-times:hover {
 i.fa-edit:hover {
   color: green;
 }
+img.ficon {
+  width: 32px;
+  height: 32px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
