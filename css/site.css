@@ -25,3 +25,8 @@ img.sicon {
   height: 24px;
   filter: grayscale(100%);
 }
+img.sicon:hover {
+  width: 24px;
+  height: 24px;
+  filter: grayscale(0%);
+}
