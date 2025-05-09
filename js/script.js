@@ -44,15 +44,13 @@ function updateMainBookmarks(sel, html) {
 function updateMainIcons(sel, html) {
   $(sel).html('');
   var links = $('a[icon], a[icon_uri]', html);
-  $(sel).append('<p>');
   for (var i = 0; i < links.length; i++) {
       var link = links.eq(i);
       if (link.attr('ICON_URI') != null)
-          $(sel).append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON_URI') + '" alt="' + link.text() + '" title="' + link.text() + '" width="32" height="32"></a> ');
+          $(sel).append('<a href="' + link.attr('href') + '"><img class="sicon" src="' + link.attr('ICON_URI') + '" alt="' + link.text() + '" title="' + link.text() + '"></a> ');
       else
-          $(sel).append('<a href="' + link.attr('href') + '"><img src="' + link.attr('ICON') + '" alt="' + link.text() + '" title="' + link.text() + '" width="32" height="32"></a> ');
+          $(sel).append('<a href="' + link.attr('href') + '"><img class="sicon" src="' + link.attr('ICON') + '" alt="' + link.text() + '" title="' + link.text() + '"></a> ');
   }
-  $(sel).append('</p>');
   $(sel).find('a').attr('target', '_blank');
 }
 function startJson(sel, spnr, href, func) {
@@ -290,7 +288,7 @@ function startLogin(href) {
 }
 function startMain(href) {
   // start('#info', '#info', '/info.html', updateMainInfo);
-  // start('#icns', '#icns', '/icons.html', updateMainIcons);
+  start('#icns', '#icns', '/icons.html', updateMainIcons);
   start('#bks', '#bke', '/bookmarks.html', updateMainBookmarks);
   // startJson('#gists', '#gsts', 'https://api.github.com/users/jkpluta/gists', updateMainGists);
   $('#google').focus();

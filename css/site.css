@@ -17,3 +17,7 @@ img.ficon {
   margin-top: 2px;
   margin-bottom: 2px;
 }
+img.sicon {
+  width: 32px;
+  height: 32px;
+}
