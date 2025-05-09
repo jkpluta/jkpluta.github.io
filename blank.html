@@ -26,8 +26,8 @@
 
         <div class="col-6" style="text-align: right;">
           <span id="mnu">
-            <i id="fullscreen" class="fa fa-expand nfs" style="cursor: pointer; font-size: xx-large;"></i>
-            <a id="power-off" href="" style="font-size: xx-large;"><i class="fa fa-power-off"></i></a>
+            <i id="fullscreen" class="fa fa-expand" style="cursor: pointer; font-size: xx-large;"></i>
+            <i id="power-off" class="fa fa-power-off" style="cursor: pointer; font-size: xx-large;"></i>
           </span>
         </div>
       </div>
@@ -70,12 +70,19 @@
                  || document.webkitIsFullScreen;
         }
 
-        $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function() {
-            if(isFullscreen()) {
-                $('.nfs').css('visibility', 'hidden');
+        function ui()
+        {
+          if(isFullscreen()) {
+                $('#fullscreen').removeClass('fa-expand');
+                $('#fullscreen').addClass('fa-window-close');
             } else {
-                $('.nfs').css('visibility', 'visible');
+                $('#fullscreen').removeClass('fa-window-close');
+                $('#fullscreen').addClass('fa-expand');
             }
+        }
+
+        $(document).on('webkitfullscreenchange mozfullscreenchange fullscreenchange MSFullscreenChange', function() {
+          ui();
         });
 
         $('#power-off').click(function() {
@@ -83,8 +90,18 @@
         });
 
         $('#fullscreen').click(function() {
+          if (isFullscreen()) {
+            closeFullscreen();
+          } else {
             openFullscreen();
+          }
         });
+
+        $('#restore').click(function() {
+            closeFullscreen();
+        });
+
+        ui();
 
         setInterval(function() {
 
