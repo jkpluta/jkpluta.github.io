@@ -20,4 +20,5 @@ img.ficon {
 img.sicon {
   width: 24px;
   height: 24px;
+  filter: grayscale(100%);
 }
