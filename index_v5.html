@@ -17,18 +17,17 @@
   </head>
   <body>
     <div class="container">
-      <nav id="header" class="navbar navbar-expand-sm navbar-dark bg-faded" style="background:#415200;">
+      <nav id="header" class="navbar navbar-dark bg-faded px-3" style="background:#415200;">
         <div id="jkp" class="navbar-brand">
           <img src="https://jkpluta.github.io/img/icon.png" class="d-inline-block align-top" alt="">
           Jan K. Pluta
         </div>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Nawigacja">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-end" id="navbar">
+        <div class="justify-content-end" id="navbar">
           <ul class="navbar-nav">
-            <li class="nav-item">
+            <li class="nav-item d-block d-sm-none">
               <a class="nav-link" href="#bks">Zakładki</a>
+            </li>
+            <li id="icns" class="nav-item d-none d-md-block">
             </li>
           </ul>
         </div>
@@ -46,16 +45,16 @@
         </div>
       </div>
 
-      <div id="google" class="row">
-        <div class="col">
-          <p>
-            <form action="https://www.google.com/search" class="form-inline" method="get" name="search-form" target="_blank">
-              <input id="google" autocomplete="on" class="form-control col-9 col-md-8 col-lg-6 ml-auto" name="q" placeholder="Google" required="required" type="text">
-              <button class="btn btn-primary form-control" type="submit">Szukaj</button>
-            </form>
-          </p>
+      <form class="py-3 px-5" action="https://www.google.com/search" method="get" name="search-form" target="_blank">
+        <div class="row">
+          <div class="col col-9 px-1">
+            <input id="google" autocomplete="on" class="form-control" name="q" placeholder="Google" required="required" type="text">
+          </div>
+          <div class="col col-3 px-1">
+            <button class="btn btn-primary form-control" type="submit">Szukaj</button>
+          </div>
         </div>
-      </div>
+      </form>
 
       <div id="bks" class="row">
         <div id="bke" class="col">
