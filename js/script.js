@@ -29,7 +29,7 @@ function updateMainBookmarks(sel, html) {
           if (bieżące_linki.length > 0) {
               var link = bieżące_linki.first();
               if (link.attr('ICON_URI') != null)
-                  $('#bk' + i).append('<dt class="ficon text-truncate"><a href="' + link.attr('href') + '"><img class="ficon" src="' + link.attr('ICON_URI') + '" alt="" title="' + link.text() + '"> ' + link.text() + '</a></dt>');
+                  $('#bk' + i).append('<dt class="ficon text-truncate"><a class="ficon" href="' + link.attr('href') + '"><img class="ficon" src="' + link.attr('ICON_URI') + '" alt="" title="' + link.text() + '"> ' + link.text() + '</a></dt>');
               else
                   $('#bk' + i).append('<dt class="ficon text-truncate">' + link[0].outerHTML + '</dt>');
           }
