@@ -12,6 +12,7 @@ i.fa-edit:hover {
   color: green;
 }
 a.ficon {
+  font-size: large;
   text-decoration: none;
 }
 img.ficon {
