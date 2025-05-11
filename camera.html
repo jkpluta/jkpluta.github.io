@@ -6,7 +6,7 @@
     webcam, fetch an image from that stream, and create a PNG using that image.
   </p>
 
-<div id="sourceSelectPanel" class="row" style="display: none;">
+<div id="sourceSelectPanel" class="row" style="display: block;">
     <div class="col form-group" style="padding-left: 10px; padding-right: 10px;">
         <select id="sourceSelect" class="form-control" style="min-width: 100%;">
         </select>
@@ -85,7 +85,7 @@
       .enumerateDevices()
       .then((devices) => {
         devices.forEach((device) => {
-          if (device.kind == "videoinput") {
+          if (device.kind != "*videoinput") {
             const sourceOption = document.createElement('option')
             sourceOption.text = "--" + device.kind + "-" + device.label + "*"
             sourceOption.value = device.deviceId
