@@ -73,7 +73,7 @@
   function restart(deviceId) {
     navigator.mediaDevices
       //.getUserMedia({ video: true, audio: false })
-      .getUserMedia({ video: { exact: deviceId } })
+      .getUserMedia({ video: { deviceId: deviceId } })
       .then((stream) => {
         video.srcObject = stream;
         video.play();
