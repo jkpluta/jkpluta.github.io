@@ -112,12 +112,12 @@
             sourceOption.text = device.label
             sourceOption.value = device.deviceId
             sourceSelect.appendChild(sourceOption)
-            //if (selectedDeviceId == null)
-              selectedDeviceId = device.deviceId
+            selectedDeviceId = device.deviceId
           }
         });
       })
     sourceSelect.value = selectedDeviceId
+    restart(sourceSelect.value)
 
     sourceSelect.onchange = () => {
       restart(sourceSelect.value)
