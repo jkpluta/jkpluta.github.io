@@ -70,6 +70,10 @@
     return false;
   }
 
+  function restart(deviceId) {
+    alert(deviceId.toString())
+  }
+
   function startup() {
     if (showViewLiveResultButton()) {
       return;
@@ -85,7 +89,7 @@
       .enumerateDevices()
       .then((devices) => {
         devices.forEach((device) => {
-          if (device.kind == "videoinput") {
+          if (device.kind != "*videoinput") {
             const sourceOption = document.createElement('option')
             sourceOption.text = device.label
             sourceOption.value = device.deviceId
@@ -98,8 +102,7 @@
     sourceSelect.value = selectedDeviceId
 
     sourceSelect.onchange = () => {
-      selectedDeviceId = sourceSelect.value
-      restart()
+      restart(sourceSelect.value)
     }
 
     const sourceSelectPanel = document.getElementById('sourceSelectPanel')
