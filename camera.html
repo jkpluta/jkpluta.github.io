@@ -71,6 +71,15 @@
   }
 
   function restart(deviceId) {
+    const stream = video.srcObject;
+    if (stream != null) {
+      const tracks = stream.getTracks();
+      tracks.forEach((track) => {
+        track.stop();
+      });
+    }
+    video.srcObject = null;
+
     navigator.mediaDevices
       //.getUserMedia({ video: true, audio: false })
       .getUserMedia({ video: { deviceId: deviceId } })
@@ -98,12 +107,12 @@
       .enumerateDevices()
       .then((devices) => {
         devices.forEach((device) => {
-          if (device.kind != "*videoinput") {
+          if (device.kind == "videoinput") {
             const sourceOption = document.createElement('option')
             sourceOption.text = device.label
             sourceOption.value = device.deviceId
             sourceSelect.appendChild(sourceOption)
-            if (selectedDeviceId == null)
+            //if (selectedDeviceId == null)
               selectedDeviceId = device.deviceId
           }
         });
@@ -189,21 +198,14 @@
       const data = canvas.toDataURL("image/png");
       photo.setAttribute("src", data);
 
-      /*
-    $.ajax({
-      type: "POST",
-      url: "send.html",
-      data: { 
-         imgBase64: dataURL
+      const stream = video.srcObject;
+      if (stream != null) {
+        const tracks = stream.getTracks();
+        tracks.forEach((track) => {
+          track.stop();
+        });
       }
-    }).done(function(o) {
-      console.log('saved'); 
-      // If you want the file to be visible in the browser 
-      // - please modify the callback in javascript. All you
-      // need is to return the url to the file, you just saved 
-      // and than put the image in your browser.
-    });      
-      */
+      video.srcObject = null;
     } else {
       clearPhoto();
     }
