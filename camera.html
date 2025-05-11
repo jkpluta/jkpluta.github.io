@@ -90,7 +90,8 @@
             sourceOption.text = device.label
             sourceOption.value = device.deviceId
             sourceSelect.appendChild(sourceOption)
-            selectedDeviceId = device.deviceId
+            if (selectedDeviceId == null)
+              selectedDeviceId = device.deviceId
           }
         });
       })
