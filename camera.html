@@ -85,9 +85,9 @@
       .enumerateDevices()
       .then((devices) => {
         devices.forEach((device) => {
-          if (device.kind != "*videoinput") {
+          if (device.kind == "videoinput") {
             const sourceOption = document.createElement('option')
-            sourceOption.text = "--" + device.kind + "-" + device.label + "*"
+            sourceOption.text = device.label
             sourceOption.value = device.deviceId
             sourceSelect.appendChild(sourceOption)
           }
