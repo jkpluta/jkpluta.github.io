@@ -116,7 +116,8 @@
 
     const sourceSelectPanel = document.getElementById('sourceSelectPanel')
     sourceSelectPanel.style.display = 'block'
-                    
+
+    /*
     navigator.mediaDevices
       //.getUserMedia({ video: true, audio: false })
       .getUserMedia({ video: { exact: selectedDeviceId } })
@@ -127,6 +128,7 @@
       .catch((err) => {
         console.error(`An error occurred: ${err}`);
       });
+    */
 
     video.addEventListener(
       "canplay",
