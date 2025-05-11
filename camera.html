@@ -6,7 +6,7 @@
     webcam, fetch an image from that stream, and create a PNG using that image.
   </p>
 
-<div id="sourceSelectPanel" class="row" style="display: block;">
+<div id="sourceSelectPanel" class="row" style="display: none;">
     <div class="col form-group" style="padding-left: 10px; padding-right: 10px;">
         <select id="sourceSelect" class="form-control" style="min-width: 100%;">
         </select>
@@ -80,7 +80,7 @@
     startButton = document.getElementById("start-button")
 
     const sourceSelect = document.getElementById('sourceSelect')
-    const selectedDeviceId = null
+    selectedDeviceId = null
     navigator.mediaDevices
       .enumerateDevices()
       .then((devices) => {
@@ -90,6 +90,7 @@
             sourceOption.text = device.label
             sourceOption.value = device.deviceId
             sourceSelect.appendChild(sourceOption)
+            selectedDeviceId = device.deviceId
           }
         });
       })
@@ -104,7 +105,8 @@
     sourceSelectPanel.style.display = 'block'
                     
     navigator.mediaDevices
-      .getUserMedia({ video: true, audio: false })
+      //.getUserMedia({ video: true, audio: false })
+      .getUserMedia({ video: { exact: selectedDeviceId } })
       .then((stream) => {
         video.srcObject = stream;
         video.play();
