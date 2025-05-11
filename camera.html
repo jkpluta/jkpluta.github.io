@@ -71,7 +71,16 @@
   }
 
   function restart(deviceId) {
-    alert(deviceId.toString())
+    navigator.mediaDevices
+      //.getUserMedia({ video: true, audio: false })
+      .getUserMedia({ video: { exact: deviceId } })
+      .then((stream) => {
+        video.srcObject = stream;
+        video.play();
+      })
+      .catch((err) => {
+        console.error(`An error occurred: ${err}`);
+      });
   }
 
   function startup() {
