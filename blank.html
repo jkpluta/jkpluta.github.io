@@ -14,14 +14,28 @@
     <link rel="stylesheet" href="css/site.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Jan K. Pluta | Nicość</title>
+    <style>
+      div.digit {
+        display: inline-block;
+        width: 0.62em;
+        text-align: center;
+      }
+    </style>
   </head>
   <body>
     <div id="container" class="container">
     
       <div id="top-fs" class="row py-5">
 
-        <div class="col-6">
-          <span id="clock" class="clock" style="font-family: Orbitron, sans-serif; font-size: xx-large;"></span>
+        <div class="col-6" style="font-family: Orbitron, sans-serif; font-size: xx-large;">
+          <div id="d1" class="digit"></div>
+          <div id="d2" class="digit"></div>
+          :
+          <div id="d3" class="digit"></div>
+          <div id="d4" class="digit"></div>
+          :
+          <div id="d5" class="digit"></div>
+          <div id="d6" class="digit"></div>
         </div>
 
         <div class="col-6" style="text-align: right;">
@@ -115,7 +129,13 @@
           hours = (hours < 10 ? "0" : "") + hours;
 
           var currentTimeString = hours + ":" + minutes + ":" + seconds;
-          $(".clock").html(currentTimeString);
+
+          $('#d1').text(currentTimeString.charAt(0))
+          $('#d2').text(currentTimeString.charAt(1))
+          $('#d3').text(currentTimeString.charAt(3))
+          $('#d4').text(currentTimeString.charAt(4))
+          $('#d5').text(currentTimeString.charAt(6))
+          $('#d6').text(currentTimeString.charAt(7))
 
         },1000);
 
