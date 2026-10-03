@@ -1,1 +1,0 @@
-# jkpluta.github.io
