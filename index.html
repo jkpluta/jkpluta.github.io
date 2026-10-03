@@ -1,86 +1,321 @@
 <!DOCTYPE html>
-<html lang="pl" data-bs-theme="dark">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="author" content="Jan K. Pluta">
-    <meta name="description" content="Jan K. Pluta">
-    <meta name="theme-color" content="#222222"/>
-    <link rel="manifest" type="application/manifest+json" href="manifest.json" />
-    <link rel="icon" href="favicon.ico">
-    <link rel="apple-touch-icon" href="img/icon-192x192.png">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Code+Pro%7CSource+Sans+Pro">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/site.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>Jan K. Pluta</title>
-  </head>
-  <body>
-    <div class="container">
-      <nav id="header" class="navbar navbar-dark bg-faded px-3" style="background:#75485C;">
-        <div id="jkp" class="navbar-brand">
-          <img src="https://jkpluta.github.io/img/icon.png" class="d-inline-block align-top" alt="">
-          Jan K. Pluta
+<html lang="pl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="author" content="Jan K. Pluta">
+  <meta name="description" content="Jan K. Pluta — GitHub i strony jkpluta.pl.eu.org oraz vue.jkpluta.pl.eu.org">
+  <meta name="theme-color" content="#0d1117">
+  <link rel="icon" href="favicon.ico">
+  <link rel="apple-touch-icon" href="img/icon-192x192.png">
+  <title>Jan K. Pluta</title>
+  <style>
+    :root {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --canvas: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #2f81f7;
+      --accent-soft: rgba(47, 129, 247, 0.14);
+      --shadow: 0 8px 24px rgba(1, 4, 9, 0.45);
+      --avatar-ring: #75485c;
+    }
+
+    @media (prefers-color-scheme: light) {
+      :root:not([data-theme="dark"]) {
+        color-scheme: light;
+        --bg: #ffffff;
+        --canvas: #f6f8fa;
+        --border: #d0d7de;
+        --text: #1f2328;
+        --muted: #656d76;
+        --accent: #0969da;
+        --accent-soft: rgba(9, 105, 218, 0.1);
+        --shadow: 0 8px 24px rgba(31, 35, 40, 0.08);
+      }
+    }
+
+    :root[data-theme="light"] {
+      color-scheme: light;
+      --bg: #ffffff;
+      --canvas: #f6f8fa;
+      --border: #d0d7de;
+      --text: #1f2328;
+      --muted: #656d76;
+      --accent: #0969da;
+      --accent-soft: rgba(9, 105, 218, 0.1);
+      --shadow: 0 8px 24px rgba(31, 35, 40, 0.08);
+    }
+
+    :root[data-theme="dark"] {
+      color-scheme: dark;
+      --bg: #0d1117;
+      --canvas: #161b22;
+      --border: #30363d;
+      --text: #e6edf3;
+      --muted: #8b949e;
+      --accent: #2f81f7;
+      --accent-soft: rgba(47, 129, 247, 0.14);
+      --shadow: 0 8px 24px rgba(1, 4, 9, 0.45);
+    }
+
+    * { box-sizing: border-box; }
+
+    html, body { height: 100%; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans", Helvetica, Arial, sans-serif;
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .theme {
+      position: fixed;
+      top: 16px;
+      right: 16px;
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--canvas);
+      color: var(--muted);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+    }
+
+    .theme:hover { color: var(--text); border-color: var(--muted); }
+
+    .wrap {
+      min-height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 72px 20px 32px;
+    }
+
+    .profile {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      margin-bottom: 36px;
+    }
+
+    .avatar {
+      width: 148px;
+      height: 148px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      box-shadow: 0 0 0 4px var(--bg), 0 0 0 6px var(--avatar-ring);
+      background: #5ec6d4;
+    }
+
+    h1 {
+      margin: 22px 0 4px;
+      font-size: 32px;
+      font-weight: 600;
+      letter-spacing: -0.02em;
+    }
+
+    .handle {
+      margin: 0 0 16px;
+      color: var(--muted);
+      font-size: 16px;
+    }
+
+    .gh {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      height: 34px;
+      padding: 0 14px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--canvas);
+      color: var(--text);
+      text-decoration: none;
+      font-size: 14px;
+      font-weight: 500;
+    }
+
+    .gh:hover {
+      border-color: var(--muted);
+      background: var(--accent-soft);
+    }
+
+    .gh svg { flex: none; }
+
+    .sites {
+      width: min(680px, 100%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      padding: 18px;
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      background: var(--canvas);
+      color: inherit;
+      text-decoration: none;
+      box-shadow: var(--shadow);
+      min-height: 168px;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      outline: 1px solid var(--accent);
+    }
+
+    .card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      object-fit: cover;
+      border: 1px solid var(--border);
+      background: #111;
+      flex: none;
+    }
+
+    .logo-vue {
+      display: grid;
+      place-items: center;
+      background: #0f1b16;
+    }
+
+    .arrow {
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    .card:hover .arrow { color: var(--accent); }
+
+    .name {
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    .url {
+      margin-top: 2px;
+      color: var(--accent);
+      font-size: 14px;
+      word-break: break-all;
+    }
+
+    .desc {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer {
+      margin-top: auto;
+      padding-top: 40px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .sites { grid-template-columns: 1fr; }
+      h1 { font-size: 28px; }
+      .avatar { width: 124px; height: 124px; }
+    }
+  </style>
+</head>
+<body>
+  <button class="theme" type="button" aria-label="Przełącz motyw" title="Przełącz motyw">
+    <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+      <path d="M8 1.5a.75.75 0 0 1 .75.75v1.25a.75.75 0 0 1-1.5 0V2.25A.75.75 0 0 1 8 1.5Zm0 10a.75.75 0 0 1 .75.75v1.25a.75.75 0 0 1-1.5 0v-1.25a.75.75 0 0 1 .75-.75ZM2.25 7.25h1.25a.75.75 0 0 1 0 1.5H2.25a.75.75 0 0 1 0-1.5Zm10.25 0h1.25a.75.75 0 0 1 0 1.5h-1.25a.75.75 0 0 1 0-1.5ZM4.03 3.0a.75.75 0 0 1 1.06 0l.88.88a.75.75 0 1 1-1.06 1.06l-.88-.88a.75.75 0 0 1 0-1.06Zm6.0 6.94a.75.75 0 0 1 1.06 0l.88.88a.75.75 0 1 1-1.06 1.06l-.88-.88a.75.75 0 0 1 0-1.06ZM11.09 3.0a.75.75 0 0 1 0 1.06l-.88.88a.75.75 0 1 1-1.06-1.06l.88-.88a.75.75 0 0 1 1.06 0ZM5.09 9.94a.75.75 0 0 1 0 1.06l-.88.88a.75.75 0 1 1-1.06-1.06l.88-.88a.75.75 0 0 1 1.06 0ZM8 4.5A3.5 3.5 0 1 1 8 11.5 3.5 3.5 0 0 1 8 4.5Z"/>
+    </svg>
+  </button>
+
+  <main class="wrap">
+    <header class="profile">
+      <img class="avatar" src="https://github.com/jkpluta.png" width="148" height="148" alt="Awatar Jana K. Pluty">
+      <h1>Jan K. Pluta</h1>
+      <p class="handle">jkpluta</p>
+      <a class="gh" href="https://github.com/jkpluta">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+          <path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82A7.68 7.68 0 0 1 8 3.87c.68.003 1.36.092 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0 0 16 8c0-4.42-3.58-8-8-8Z"/>
+        </svg>
+        github.com/jkpluta
+      </a>
+    </header>
+
+    <section class="sites" aria-label="Strony">
+      <a class="card" href="https://jkpluta.pl.eu.org">
+        <div class="card-top">
+          <img class="logo" src="https://jkpluta.pl.eu.org/icon-192.png" width="56" height="56" alt="Logo jkpluta.pl.eu.org">
+          <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.56L3.28 12.78a.75.75 0 0 1-1.06-1.06L10.44 3.5H4.5a.75.75 0 0 1 0-1.5Z"/>
+          </svg>
         </div>
-        <div class="justify-content-end" id="navbar">
-          <ul class="navbar-nav">
-            <li class="nav-item d-block d-sm-none">
-              <a class="nav-link" href="#bks"><i class="fa fa-bookmark"></i></a>
-            </li>
-            <li id="icns" class="nav-item d-none d-md-block">
-            </li>
-          </ul>
+        <div>
+          <div class="name">Strona osobista</div>
+          <div class="url">jkpluta.pl.eu.org</div>
         </div>
-      </nav>
-      
-      <div id="top" class="row">
-        <div class="col-11">
-          Strona startowa <a href="https://github.com/jkpluta" target="_blank">github.com/jkpluta</a>.
-        </div>
-        <div class="col-1 d-none d-md-block" style="text-align: right;">
-          <span id="mnu">
-            <a target="_blank" href="http://127.0.0.1/"><i class="fa fa-home"></i></a>
-            <a target="_blank" href="blank.html"><i class="fa fa-moon-o"></i></a>
+        <p class="desc">Zakładki, zdjęcia, kalendarz, pogoda i reszta codziennych skrótów.</p>
+      </a>
+
+      <a class="card" href="https://vue.jkpluta.pl.eu.org">
+        <div class="card-top">
+          <span class="logo logo-vue" aria-hidden="true">
+            <svg width="36" height="32" viewBox="0 0 36 32" fill="none">
+              <path d="M18 30 2 4h8.2L18 16.4 25.8 4H34L18 30Z" fill="#42b883"/>
+              <path d="M18 30 8.6 14.6 12.4 8h5.1L18 12.2 18.5 8h5.1l3.8 6.6L18 30Z" fill="#35495e"/>
+            </svg>
           </span>
+          <svg class="arrow" width="16" height="16" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true">
+            <path d="M3.75 2h8.5a.75.75 0 0 1 .75.75v8.5a.75.75 0 0 1-1.5 0V4.56L3.28 12.78a.75.75 0 0 1-1.06-1.06L10.44 3.5H4.5a.75.75 0 0 1 0-1.5Z"/>
+          </svg>
         </div>
-      </div>
-
-      <form class="py-4 px-2" action="https://www.google.com/search" method="get" name="search-form" target="_blank">
-        <div class="row justify-content-center">
-          <div class="col col-9 col-md-8 col-lg-7 col-lx-6 px-1">
-            <input id="google" autocomplete="on" class="form-control" name="q" placeholder="Google" required="required" type="text">
-          </div>
-          <div class="col col-3 col-md-2 px-1">
-            <button class="btn btn-primary form-control" type="submit">Szukaj</button>
-          </div>
+        <div>
+          <div class="name">Wersja Vue</div>
+          <div class="url">vue.jkpluta.pl.eu.org</div>
         </div>
-      </form>
+        <p class="desc">Ta sama strona, zbudowana w Vue.</p>
+      </a>
+    </section>
 
-      <div id="bks" class="row">
-        <div id="bke" class="col">
-        </div>
-      </div>
+    <footer>© 2017–2026 Jan K. Pluta</footer>
+  </main>
 
-      <footer class="footer">
-        <p class="pull-right">Copyright © 2017-2025 <span style="font-weight: bold; color: #AD1915;">Jan K. Pluta</span></p>
-      </footer>
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.getRegistrations().then(function (regs) {
+        regs.forEach(function (reg) { reg.unregister(); });
+      });
+    }
 
-    </div>
+    var root = document.documentElement;
+    var saved = localStorage.getItem("theme");
+    if (saved === "light" || saved === "dark") root.setAttribute("data-theme", saved);
 
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.min.js" integrity="sha384-RuyvpeZCxMJCqVUGFI0Do1mQrods/hhxYlcVfGPOfQtPJh0JCw12tUAZ/Mv10S7D" crossorigin="anonymous"></script>
-    <script src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous"></script>
-    <script src="js/script.js"></script>
-    <script>
-        let swRegistration = null;
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('./service-worker.js').then(function (registration) {
-                console.log('ServiceWorker registration successful with scope: ', registration.scope);
-                swRegistration = registration;
-            }).catch(function (err) {
-                console.log('ServiceWorker registration failed: ', err);
-            });
-        }
-    </script>
-  </body>
+    document.querySelector(".theme").addEventListener("click", function () {
+      var current = root.getAttribute("data-theme");
+      var next = current === "light" ? "dark" : current === "dark" ? "light" : (matchMedia("(prefers-color-scheme: light)").matches ? "dark" : "light");
+      root.setAttribute("data-theme", next);
+      localStorage.setItem("theme", next);
+      document.querySelector('meta[name="theme-color"]').setAttribute("content", next === "light" ? "#ffffff" : "#0d1117");
+    });
+  </script>
+</body>
 </html>
